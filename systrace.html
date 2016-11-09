@@ -1,0 +1,629 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Systrace | The Performance Lifecycle</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./lint.html" />
+    
+    
+    <link rel="prev" href="./mat.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.6.2"
+        data-chapter-title="Systrace"
+        data-filepath="systrace.md"
+        data-basepath="."
+        data-revision="Wed Nov 09 2016 15:17:35 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        1.内存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="模型.html">
+            
+                
+                    <a href="./模型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        模型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="内存泄露.html">
+            
+                
+                    <a href="./内存泄露.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        内存泄露
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="图片.html">
+            
+                
+                    <a href="./图片.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        图片
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="引用类型.html">
+            
+                
+                    <a href="./引用类型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        引用类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="垃圾回收.html">
+            
+                
+                    <a href="./垃圾回收.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        垃圾回收
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="分析工具.html">
+            
+                
+                    <a href="./分析工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="mat.html">
+            
+                
+                    <a href="./mat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        MAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2" data-path="systrace.html">
+            
+                
+                    <a href="./systrace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Systrace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="lint.html">
+            
+                
+                    <a href="./lint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        Lint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="leakcanary.html">
+            
+                
+                    <a href="./leakcanary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.4.</b>
+                        
+                        LeakCanary
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="界面.html">
+            
+                
+                    <a href="./界面.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        2.界面
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="工具.html">
+            
+                
+                    <a href="./工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="hierarchy-viewer.html">
+            
+                
+                    <a href="./hierarchy-viewer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        Hierarchy Viewer:
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="strict-mode.html">
+            
+                
+                    <a href="./strict-mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        Strict Mode
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="过度绘制.html">
+            
+                
+                    <a href="./过度绘制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        过度绘制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="网络.html">
+            
+                
+                    <a href="./网络.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        3.响应时间
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" >
+            
+            <span><b>3.1.</b> 网络</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="启动.html">
+            
+                
+                    <a href="./启动.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        启动
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="电量.html">
+            
+                
+                    <a href="./电量.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        4.电量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="瘦身.html">
+            
+                
+                    <a href="./瘦身.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        5.瘦身
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >The Performance Lifecycle</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="systrace&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"><strong>Systrace&#x7B80;&#x5355;&#x4ECB;&#x7ECD;</strong></h2>
+<p>Systrace&#x662F;Android4.1&#x4E2D;&#x65B0;&#x589E;&#x7684;&#x6027;&#x80FD;&#x6570;&#x636E;&#x91C7;&#x6837;&#x548C;&#x5206;&#x6790;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x53EF;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x6536;&#x96C6;Android&#x5173;&#x952E;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x5982;surfaceflinger&#x3001;WindowManagerService&#x7B49;Framework&#x90E8;&#x5206;&#x5173;&#x952E;&#x6A21;&#x5757;&#x3001;&#x670D;&#x52A1;&#xFF0C;View&#x7CFB;&#x7EDF;&#x7B49;&#xFF09;&#x7684;&#x8FD0;&#x884C;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x66F4;&#x76F4;&#x89C2;&#x7684;&#x5206;&#x6790;&#x7CFB;&#x7EDF;&#x74F6;&#x9888;&#xFF0C;&#x6539;&#x8FDB;&#x6027;&#x80FD;&#x3002;</p>
+<p>Systrace&#x7684;&#x529F;&#x80FD;&#x5305;&#x62EC;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x7684;I\/O&#x64CD;&#x4F5C;&#x3001;&#x5185;&#x6838;&#x5DE5;&#x4F5C;&#x961F;&#x5217;&#x3001;CPU&#x8D1F;&#x8F7D;&#x4EE5;&#x53CA;Android&#x5404;&#x4E2A;&#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x51B5;&#x7B49;&#x3002;&#x5728;Android&#x5E73;&#x53F0;&#x4E2D;&#xFF0C;&#x5B83;&#x4E3B;&#x8981;&#x7531;3&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF1A;</p>
+<ul>
+<li>&#x5185;&#x6838;&#x90E8;&#x5206;&#xFF1A;Systrace&#x5229;&#x7528;&#x4E86;Linux Kernel&#x4E2D;&#x7684;ftrace&#x529F;&#x80FD;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;Systrace&#x7684;&#x8BDD;&#xFF0C;&#x5FC5;&#x987B;&#x5F00;&#x542F;kernel&#x4E2D;&#x548C;ftrace&#x76F8;&#x5173;&#x7684;&#x6A21;&#x5757;&#x3002;</li>
+<li>&#x6570;&#x636E;&#x91C7;&#x96C6;&#x90E8;&#x5206;&#xFF1A;Android&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;Trace&#x7C7B;&#x3002;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x5229;&#x7528;&#x8BE5;&#x7C7B;&#x628A;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x8F93;&#x51FA;&#x7ED9;ftrace&#x3002;&#x540C;&#x65F6;&#xFF0C;Android&#x8FD8;&#x6709;&#x4E00;&#x4E2A;atrace&#x7A0B;&#x5E8F;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4ECE;ftrace&#x4E2D;&#x8BFB;&#x53D6;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x7136;&#x540E;&#x4EA4;&#x7ED9;&#x6570;&#x636E;&#x5206;&#x6790;&#x5DE5;&#x5177;&#x6765;&#x5904;&#x7406;&#x3002;</li>
+<li><p>&#x6570;&#x636E;&#x5206;&#x6790;&#x5DE5;&#x5177;&#xFF1A;Android&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;systrace.py&#xFF08;python&#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x4F4D;&#x4E8E;Android SDK&#x76EE;&#x5F55;\/tools\/systrace&#x4E2D;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x5C06;&#x8C03;&#x7528;atrace&#x7A0B;&#x5E8F;&#xFF09;&#x7528;&#x6765;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x91C7;&#x96C6;&#x7684;&#x65B9;&#x5F0F;&#xFF08;&#x5982;&#x91C7;&#x96C6;&#x6570;&#x636E;&#x7684;&#x6807;&#x7B7E;&#x3001;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x540D;&#x7B49;&#xFF09;&#x548C;&#x6536;&#x96C6;ftrace&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#x5E76;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#x7F51;&#x9875;&#x6587;&#x4EF6;&#x4F9B;&#x7528;&#x6237;&#x67E5;&#x770B;&#x3002; &#x4ECE;&#x672C;&#x8D28;&#x4E0A;&#x8BF4;&#xFF0C;Systrace&#x662F;&#x5BF9;Linux Kernel&#x4E2D;ftrace&#x7684;&#x5C01;&#x88C5;&#x3002;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x5229;&#x7528;Android&#x63D0;&#x4F9B;&#x7684;Trace&#x7C7B;&#x6765;&#x4F7F;&#x7528;Systrace.</p>
+<p>&#x5173;&#x4E8E;Systrace&#x7684;&#x5B98;&#x65B9;&#x4ECB;&#x7ECD;&#x548C;&#x4F7F;&#x7528;&#x53EF;&#x4EE5;&#x770B;&#x8FD9;&#x91CC;&#xFF1A;<a href="http://developer.android.com/tools/help/systrace.html" title="SysTrace&#x5B98;&#x65B9;&#x4ECB;&#x7ECD;" target="_blank">Systrace</a></p>
+</li>
+</ul>
+<h2 id="systrace&#x7B80;&#x5355;&#x4F7F;&#x7528;"><strong>Systrace&#x7B80;&#x5355;&#x4F7F;&#x7528;</strong></h2>
+<p>&#x4F7F;&#x7528;Systrace&#x524D;&#xFF0C;&#x8981;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;Systrace&#x5728;&#x5404;&#x4E2A;&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x9274;&#x4E8E;&#x5927;&#x5BB6;&#x4F7F;&#x7528;Eclipse&#x548C;Android Studio&#x7684;&#x5C45;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x76F4;&#x63A5;&#x6458;&#x6284;&#x5B98;&#x7F51;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0D;&#x7BA1;&#x662F;&#x4EC0;&#x4E48;&#x5DE5;&#x5177;&#xFF0C;&#x6D41;&#x7A0B;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF1A;</p>
+<ul>
+<li>&#x624B;&#x673A;&#x51C6;&#x5907;&#x597D;&#x4F60;&#x8981;&#x8FDB;&#x884C;&#x6293;&#x53D6;&#x7684;&#x754C;&#x9762;</li>
+<li>&#x70B9;&#x51FB;&#x5F00;&#x59CB;&#x6293;&#x53D6;&#xFF08;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x8BDD;&#x5C31;&#x662F;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF09;</li>
+<li>&#x624B;&#x673A;&#x4E0A;&#x5F00;&#x59CB;&#x64CD;&#x4F5C;</li>
+<li>&#x8BBE;&#x5B9A;&#x597D;&#x7684;&#x65F6;&#x95F4;&#x5230;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x5C06;&#x751F;&#x6210;Trace&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528;Chrome&#x5C06;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x6253;&#x5F00;&#x8FDB;&#x884C;&#x5206;&#x6790;</li>
+</ul>
+<h4 id="using-eclipse"><strong>Using Eclipse</strong></h4>
+<ol>
+<li><p>In Eclipse, open an Android application project.</p>
+<ol>
+<li>Switch to the DDMS perspective, by selecting Window &gt; Perspectives &gt; DDMS.</li>
+<li>In the Devices tab, select the device on which to run a trace. If no devices are listed, make sure your device is connected via USB cable and that debugging is enabled on the device.</li>
+<li>Click the Systrace icon at the top of the Devices panel to configure tracing.</li>
+<li>Set the tracing options and click OK to start the trace.</li>
+</ol>
+</li>
+</ol>
+<h4 id="using-android-studio"><strong>Using Android Studio</strong></h4>
+<ol>
+<li><p>In Android Studio, open an Android application project.</p>
+<ol>
+<li>Open the Device Monitor by selecting Tools &gt; Android &gt; Monitor.</li>
+<li>In the Devices tab, select the device on which to run a trace. If no devices are listed, make sure your device is connected via USB cable and that debugging is enabled on the device.</li>
+<li>Click the Systrace icon at the top of the Devices panel to configure tracing.</li>
+<li>Set the tracing options and click OK to start the trace.</li>
+</ol>
+</li>
+</ol>
+<h4 id="using-device-monitor"><strong>Using Device Monitor</strong></h4>
+<ol>
+<li><p>Navigate to your SDK tools\/ directory.</p>
+<ol>
+<li>Run the monitor program.</li>
+<li>In the Devices tab, select the device on which to run a trace. If no devices are listed, make sure your device is connected via USB cable and that debugging is enabled on the device.</li>
+<li>Click the Systrace icon at the top of the Devices panel to configure tracing.</li>
+<li>Set the tracing options and click OK to start the trace.</li>
+</ol>
+</li>
+</ol>
+<h4 id="command-line-usage"><strong>Command Line Usage</strong></h4>
+<p>&#x547D;&#x4EE4;&#x884C;&#x5F62;&#x5F0F;&#x6BD4;&#x8F83;&#x7075;&#x6D3B;&#xFF0C;&#x901F;&#x5EA6;&#x4E5F;&#x6BD4;&#x8F83;&#x5FEB;&#xFF0C;&#x4E00;&#x6B21;&#x6027;&#x914D;&#x7F6E;&#x597D;&#x4E4B;&#x540E;&#xFF0C;&#x4EE5;&#x540E;&#x518D;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x5F88;&#x5FEB;&#x5C31;&#x51FA;&#x7ED3;&#x679C;&#xFF08;<strong>&#x5F3A;&#x70C8;&#x63A8;&#x8350;</strong>&#xFF09;</p>
+<table>
+<thead>
+<tr>
+<th>12</th>
+<th>$ cd android-sdk\/platform-tools\/systrace$ python systrace.py --time=10 -o mynewtrace.html sched gfx view wm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x770B;&#x5230;Systrace&#x5DE5;&#x5177;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;Bash&#x4E2D;&#x914D;&#x7F6E;&#x597D;&#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x5F84;&#x548C;Alias&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x8FD8;&#x662F;&#x5F88;&#x5FEB;&#x901F;&#x7684;&#x3002;&#x53E6;&#x5916;User&#x7248;&#x672C;&#x662F;&#x4E0D;&#x53EF;&#x4EE5;&#x6293;Trace&#x7684;&#xFF0C;&#x53EA;&#x6709;ENG&#x7248;&#x672C;&#x6216;&#x8005;Userdebug&#x7248;&#x672C;&#x624D;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x6293;&#x53D6;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;Trace&#x6587;&#x4EF6;&#xFF0C;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x53EA;&#x80FD;&#x88AB;Chrome&#x6253;&#x5F00;&#x3002;&#x5173;&#x4E8E;&#x5982;&#x4F55;&#x5206;&#x6790;Trace&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4F1A;&#x8BB2;&#x3002;&#x4E0D;&#x8BBA;&#x4F7F;&#x7528;&#x90A3;&#x79CD;&#x5DE5;&#x5177;&#xFF0C;&#x5728;&#x6293;&#x53D6;&#x4E4B;&#x524D;&#x90FD;&#x4F1A;&#x8BA9;&#x9009;&#x62E9;&#x53C2;&#x6570;&#xFF0C;&#x4E0B;&#x9762;&#x8BF4;&#x4E00;&#x4E0B;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x610F;&#x601D;&#xFF1A;</p>
+<ul>
+<li>-h, &#x2013;help Show the help message.&#xFF08;&#x5E2E;&#x52A9;&#xFF09;</li>
+<li>-o Write the HTML trace report to the specified file.&#xFF08;&#x5373;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#xFF09;</li>
+<li>-t N, &#x2013;time=N Trace activity for N seconds. The default value is 5 seconds. &#xFF08;Trace&#x6293;&#x53D6;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4E00;&#x822C;&#x662F; &#xFF1A; -t 8&#xFF09;</li>
+<li>-b N, &#x2013;buf-size=N Use a trace buffer size of N kilobytes. This option lets you limit the total size of the data collected during a trace.</li>
+<li>-k</li>
+<li>&#x2014;ktrace= Trace the activity of specific kernel functions, specified in a comma-separated list.</li>
+<li><p>-l, &#x2013;list-categories List the available tracing category tags. The available tags are(&#x4E0B;&#x9762;&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x7528;&#x7FFB;&#x8BD1;&#x4E86;&#x4F30;&#x8BA1;&#x5927;&#x5BB6;&#x4E5F;&#x770B;&#x5F97;&#x61C2;&#xFF0C;&#x8D34;&#x5B98;&#x65B9;&#x7684;&#x89E3;&#x91CA;&#x4E5F;&#x4F1A;&#x6BD4;&#x8F83;&#x6743;&#x5A01;&#xFF0C;&#x540E;&#x9762;&#x5206;&#x6790;&#x7684;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x4F1A;&#x770B;&#x5230;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x4F5C;&#x4E1A;&#x7684;):</p>
+<ul>
+<li><strong>gfx</strong> - Graphics</li>
+<li><strong>input</strong> - Input</li>
+<li><strong>view</strong> - View</li>
+<li>webview - WebView</li>
+<li><strong>wm</strong> - Window Manager</li>
+<li><strong>am</strong> - Activity Manager</li>
+<li>audio - Audio</li>
+<li>video - Video</li>
+<li>camera - Camera</li>
+<li>hal - Hardware Modules</li>
+<li>res - Resource Loading</li>
+<li><strong>dalvik</strong> - Dalvik VM</li>
+<li>rs - RenderScript</li>
+<li><strong>sched</strong> - CPU Scheduling</li>
+<li><strong>freq</strong> - CPU Frequency</li>
+<li><strong>membus</strong> - Memory Bus Utilization</li>
+<li><strong>idle</strong> - CPU Idle</li>
+<li><strong>disk</strong> - Disk input and output</li>
+<li><strong>load</strong> - CPU Load</li>
+<li><strong>sync</strong> - Synchronization Manager</li>
+<li><strong>workq</strong> - Kernel Workqueues Note: Some trace categories are not supported on all devices. Tip: If you want to see the names of tasks in the trace output, you must include the sched category in your command parameters.</li>
+</ul>
+</li>
+<li><p>-a</p>
+</li>
+<li><p>&#x2014;app= Enable tracing for applications, specified as a comma-separated list of package names. The apps must contain tracing instrumentation calls from the Trace class. For more information, see Analyzing Display and Performance.</p>
+</li>
+<li>&#x2014;link-assets Link to the original CSS or JavaScript resources instead of embedding them in the HTML trace report.</li>
+<li>&#x2014;from-file= Create the interactive Systrace report from a file, instead of running a live trace.</li>
+<li>&#x2014;asset-dir= Specify a directory for the trace report assets. This option is useful for maintaining a single set of assets for multiple Systrace reports.</li>
+<li>-e</li>
+<li><p>&#x2014;serial= Conduct the trace on a specific connected device, identified by its device serial number.</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x53C2;&#x6570;&#x867D;&#x7136;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x4F46;&#x4F7F;&#x7528;&#x5DE5;&#x5177;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;&#x8003;&#x8651;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x5728;&#x5BF9;&#x5E94;&#x7684;&#x9879;&#x76EE;&#x524D;&#x6253;&#x94A9;&#x5373;&#x53EF;&#xFF0C;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x53BB;&#x624B;&#x52A8;&#x52A0;&#x53C2;&#x6570;&#xFF1A;</p>
+</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x914D;&#x7F6E;&#x6210;Alias&#xFF0C;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>12</th>
+<th>alias st-start=&apos;python \/home\/gaojianwu\/Software\/android-studio\/sdk\/platform-tools\/systrace\/systrace.py&apos;  alias st-start-gfx-trace = &#x2018;st-start -t 8 gfx input view sched freq wm am hwui workq res dalvik sync disk load perf hal rs idle mmc&#x2019;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>&#x8FD9;&#x6837;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6572; <strong>st-start-gfx-mx4</strong> &#x5373;&#x53EF;&#xFF0C;&#x5F53;&#x7136;&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x548C;&#x4FDD;&#x6301;&#x5404;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x52A0;&#x4E0A; <strong>-o xxx.Trace</strong> .&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x4E0D;&#x5FC5;&#x4E00;&#x6B21;&#x5C31;&#x7406;&#x89E3;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8BB0;&#x4F4F;&#x5982;&#x4F55;&#x7B80;&#x5355;&#x4F7F;&#x7528;&#x5373;&#x53EF;&#xFF0C;&#x5728;&#x5206;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x4E1C;&#x897F;&#x90FD;&#x4F1A;&#x6162;&#x6162;&#x719F;&#x6089;&#x7684;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./mat.html" class="navigation navigation-prev " aria-label="Previous page: MAT"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./lint.html" class="navigation navigation-next " aria-label="Next page: Lint"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

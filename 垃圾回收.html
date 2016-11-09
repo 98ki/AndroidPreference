@@ -1,0 +1,753 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>垃圾回收 | The Performance Lifecycle</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./分析工具.html" />
+    
+    
+    <link rel="prev" href="./引用类型.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.5"
+        data-chapter-title="垃圾回收"
+        data-filepath="垃圾回收.md"
+        data-basepath="."
+        data-revision="Wed Nov 09 2016 15:17:35 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        1.内存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="模型.html">
+            
+                
+                    <a href="./模型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        模型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="内存泄露.html">
+            
+                
+                    <a href="./内存泄露.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        内存泄露
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="图片.html">
+            
+                
+                    <a href="./图片.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        图片
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="引用类型.html">
+            
+                
+                    <a href="./引用类型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        引用类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="垃圾回收.html">
+            
+                
+                    <a href="./垃圾回收.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        垃圾回收
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="分析工具.html">
+            
+                
+                    <a href="./分析工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="mat.html">
+            
+                
+                    <a href="./mat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        MAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="systrace.html">
+            
+                
+                    <a href="./systrace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Systrace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="lint.html">
+            
+                
+                    <a href="./lint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        Lint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="leakcanary.html">
+            
+                
+                    <a href="./leakcanary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.4.</b>
+                        
+                        LeakCanary
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="界面.html">
+            
+                
+                    <a href="./界面.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        2.界面
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="工具.html">
+            
+                
+                    <a href="./工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="hierarchy-viewer.html">
+            
+                
+                    <a href="./hierarchy-viewer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        Hierarchy Viewer:
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="strict-mode.html">
+            
+                
+                    <a href="./strict-mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        Strict Mode
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="过度绘制.html">
+            
+                
+                    <a href="./过度绘制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        过度绘制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="网络.html">
+            
+                
+                    <a href="./网络.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        3.响应时间
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" >
+            
+            <span><b>3.1.</b> 网络</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="启动.html">
+            
+                
+                    <a href="./启动.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        启动
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="电量.html">
+            
+                
+                    <a href="./电量.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        4.电量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="瘦身.html">
+            
+                
+                    <a href="./瘦身.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        5.瘦身
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >The Performance Lifecycle</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <p>Java&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF1A;</p>
+<p>&#x5728;C&#xFF0C;C++&#x6216;&#x5176;&#x4ED6;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x8D44;&#x6E90;&#x6216;&#x5185;&#x5B58;&#x90FD;&#x5FC5;&#x987B;&#x7531;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x884C;&#x58F0;&#x660E;&#x4EA7;&#x751F;&#x548C;&#x56DE;&#x6536;&#xFF0C;&#x5426;&#x5219;&#x5176;&#x4E2D;&#x7684;&#x8D44;&#x6E90;&#x5C06;&#x6D88;&#x8017;&#xFF0C;&#x9020;&#x6210;&#x8D44;&#x6E90;&#x7684;&#x6D6A;&#x8D39;&#x751A;&#x81F3;&#x5D29;&#x6E83;&#x3002;&#x4F46;&#x624B;&#x5DE5;&#x56DE;&#x6536;&#x5185;&#x5B58;&#x5F80;&#x5F80;&#x662F;&#x4E00;&#x9879;&#x590D;&#x6742;&#x800C;&#x8270;&#x5DE8;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x4E8E;&#x662F;&#xFF0C;Java&#x6280;&#x672F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x7EA7;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5373;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x7EBF;&#x7A0B;&#xFF08;Garbage Collection Thread&#xFF09;&#xFF0C;&#x6765;&#x8DDF;&#x8E2A;&#x6BCF;&#x4E00;&#x5757;&#x5206;&#x914D;&#x51FA;&#x53BB;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x5F53;Java &#x865A;&#x62DF;&#x673A;&#xFF08;Java Virtual Machine&#xFF09;&#x5904;&#x4E8E;&#x7A7A;&#x95F2;&#x5FAA;&#x73AF;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x7EBF;&#x7A0B;&#x4F1A;&#x81EA;&#x52A8;&#x68C0;&#x67E5;&#x6BCF;&#x4E00;&#x5FEB;&#x5206;&#x914D;&#x51FA;&#x53BB;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x7136;&#x540E;&#x81EA;&#x52A8;&#x56DE;&#x6536;&#x6BCF;&#x4E00;&#x5FEB;&#x53EF;&#x4EE5;&#x56DE;&#x6536;&#x7684;&#x65E0;&#x7528;&#x7684;&#x5185;&#x5B58;&#x5757;&#x3002;</p>
+<p>&#x4F5C;&#x7528;&#xFF1A;</p>
+<p>1.&#x6E05;&#x9664;&#x4E0D;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x6765;&#x91CA;&#x653E;&#x5185;&#x5B58;&#xFF1A;</p>
+<p>&#x91C7;&#x7528;&#x4E00;&#x79CD;&#x52A8;&#x6001;&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x6280;&#x672F;&#xFF0C;&#x5B83;&#x81EA;&#x52A8;&#x5730;&#x91CA;&#x653E;&#x4E0D;&#x518D;&#x88AB;&#x7A0B;&#x5E8F;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x6309;&#x7167;&#x7279;&#x5B9A;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x7B97;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x8D44;&#x6E90;&#x81EA;&#x52A8;&#x56DE;&#x6536;&#x7684;&#x529F;&#x80FD;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0D;&#x518D;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5185;&#x5B58;&#x56DE;&#x6536;&#x5B83;&#x5360;&#x9886;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x4EE5;&#x4FBF;&#x7A7A;&#x95F4;&#x88AB;&#x540E;&#x6765;&#x7684;&#x65B0;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x3002;</p>
+<p>2.&#x6D88;&#x9664;&#x5806;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x788E;&#x7247;&#xFF1A;</p>
+<p>&#x7531;&#x4E8E;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x548C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x91CA;&#x653E;&#x4E22;&#x5F03;&#x5BF9;&#x8C61;&#x6240;&#x5360;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x5185;&#x5B58;&#x4F1A;&#x51FA;&#x73B0;&#x788E;&#x7247;&#x3002;&#x788E;&#x7247;&#x662F;&#x5206;&#x914D;&#x7ED9;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x7A7A;&#x95F2;&#x5185;&#x5B58;&#x6D1E;&#x3002;&#x788E;&#x7247;&#x6574;&#x7406;&#x5C06;&#x6240;&#x5360;&#x7528;&#x7684;&#x5806;&#x5185;&#x5B58;&#x79FB;&#x5230;&#x5806;&#x7684;&#x4E00;&#x7AEF;&#xFF0C;JVM&#x5C06;&#x6574;&#x7406;&#x51FA;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7ED9;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F18;&#x70B9;&#xFF1A;</p>
+<p>1.&#x51CF;&#x8F7B;&#x7F16;&#x7A0B;&#x7684;&#x8D1F;&#x62C5;&#xFF0C;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#xFF1A;</p>
+<p>&#x4F7F;&#x7A0B;&#x5E8F;&#x5458;&#x4ECE;&#x624B;&#x5DE5;&#x56DE;&#x6536;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x7E41;&#x91CD;&#x5DE5;&#x4F5C;&#x4E2D;&#x89E3;&#x8131;&#x4E86;&#x51FA;&#x6765;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x6CA1;&#x6709;&#x5783;&#x573E;&#x6536;&#x96C6;&#x673A;&#x5236;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x80FD;&#x8981;&#x82B1;&#x8BB8;&#x591A;&#x65F6;&#x95F4;&#x6765;&#x89E3;&#x51B3;&#x4E00;&#x4E2A;&#x96BE;&#x61C2;&#x7684;&#x5B58;&#x50A8;&#x5668;&#x95EE;&#x9898;&#x3002;&#x5728;&#x7528;Java&#x8BED;&#x8A00;&#x7F16;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9760;&#x5783;&#x573E;&#x6536;&#x96C6;&#x673A;&#x5236;&#x53EF;&#x5927;&#x5927;&#x7F29;&#x77ED;&#x65F6;&#x95F4;&#x3002;</p>
+<p>2.&#x5B83;&#x4FDD;&#x62A4;&#x7A0B;&#x5E8F;&#x7684;&#x5B8C;&#x6574;&#x6027;&#xFF1A;</p>
+<p>&#x56E0;&#x6B64;&#x5783;&#x573E;&#x6536;&#x96C6;&#x662F;Java&#x8BED;&#x8A00;&#x5B89;&#x5168;&#x6027;&#x7B56;&#x7565;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x90E8;&#x4EFD;&#x3002;</p>
+<p>&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x7F3A;&#x70B9;&#xFF1A;</p>
+<p>1.&#x5360;&#x7528;&#x8D44;&#x6E90;&#x65F6;&#x95F4;&#xFF1A;</p>
+<p>Java&#x865A;&#x62DF;&#x673A;&#x5FC5;&#x987B;&#x8FFD;&#x8E2A;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#x4E2D;&#x6709;&#x7528;&#x7684;&#x5BF9;&#x8C61;, &#x800C;&#x4E14;&#x6700;&#x7EC8;&#x91CA;&#x653E;&#x6CA1;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#x9700;&#x8981;&#x82B1;&#x8D39;&#x5904;&#x7406;&#x5668;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<p>2.&#x4E0D;&#x53EF;&#x9884;&#x77E5;:</p>
+<p>&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x7EBF;&#x7A0B;&#x867D;&#x7136;&#x662F;&#x4F5C;&#x4E3A;&#x4F4E;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x7EBF;&#x7A0B;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x5728;&#x7CFB;&#x7EDF;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x91CF;&#x8FC7;&#x4F4E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x53EF;&#x80FD;&#x4F1A;&#x7A81;&#x53D1;&#x5730;&#x6267;&#x884C;&#x6765;&#x633D;&#x6551;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x3002;&#x5F53;&#x7136;&#x5176;&#x6267;&#x884C;&#x4E0E;&#x5426;&#x4E5F;&#x662F;&#x4E0D;&#x53EF;&#x9884;&#x77E5;&#x7684;&#x3002;</p>
+<p>3.&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#xFF1A;</p>
+<p>&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x4E00;&#x4E2A;&#x65E0;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x6536;&#x96C6;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5728;&#x4E00;&#x6BB5;Java&#x8BED;&#x8A00;&#x4EE3;&#x7801;&#x4E2D;&#x4E00;&#x5B9A;&#x4F1A;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x540C;&#x6837;&#x4E5F;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x9884;&#x77E5;&#x5728;&#x4E00;&#x7EC4;&#x5747;&#x7B26;&#x5408;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x6536;&#x96C6;&#x6807;&#x51C6;&#x7684;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x54EA;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x9996;&#x5148;&#x6536;&#x96C6;&#x3002;</p>
+<p>4.&#x4E0D;&#x53EF;&#x64CD;&#x4F5C;</p>
+<p>&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E0D;&#x53EF;&#x4EE5;&#x88AB;&#x5F3A;&#x5236;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x7A0B;&#x5E8F;&#x5458;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;System. gc&#x65B9;&#x6CD5;&#x6765;&#x5EFA;&#x8BAE;&#x6267;&#x884C;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x3002;</p>
+<p>&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B97;&#x6CD5;&#xFF1A;</p>
+<p>1.&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF08;Reference Counting&#xFF09;</p>
+<p>&#x6BD4;&#x8F83;&#x53E4;&#x8001;&#x7684;&#x56DE;&#x6536;&#x7B97;&#x6CD5;&#x3002;&#x539F;&#x7406;&#x662F;&#x6B64;&#x5BF9;&#x8C61;&#x6709;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#xFF0C;&#x5373;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#xFF0C;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x5219;&#x51CF;&#x5C11;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x3002;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x53EA;&#x7528;&#x6536;&#x96C6;&#x8BA1;&#x6570;&#x4E3A;0&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x6B64;&#x7B97;&#x6CD5;&#x6700;&#x81F4;&#x547D;&#x7684;&#x662F;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>2.&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#xFF08;Mark-Sweep&#xFF09;</p>
+<p>&#x6B64;&#x7B97;&#x6CD5;&#x6267;&#x884C;&#x5206;&#x4E24;&#x9636;&#x6BB5;&#x3002;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x4ECE;&#x5F15;&#x7528;&#x6839;&#x8282;&#x70B9;&#x5F00;&#x59CB;&#x6807;&#x8BB0;&#x6240;&#x6709;&#x88AB;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x904D;&#x5386;&#x6574;&#x4E2A;&#x5806;&#xFF0C;&#x628A;&#x672A;&#x6807;&#x8BB0;&#x7684;&#x5BF9;&#x8C61;&#x6E05;&#x9664;&#x3002;&#x6B64;&#x7B97;&#x6CD5;&#x9700;&#x8981;&#x6682;&#x505C;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x5185;&#x5B58;&#x788E;&#x7247;&#x3002;</p>
+<p>3.&#x590D;&#x5236;&#xFF08;Copying&#xFF09;</p>
+<p>&#x6B64;&#x7B97;&#x6CD5;&#x628A;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x5212;&#x4E3A;&#x4E24;&#x4E2A;&#x76F8;&#x7B49;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x6BCF;&#x6B21;&#x53EA;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x533A;&#x57DF;&#x3002;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x904D;&#x5386;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x533A;&#x57DF;&#xFF0C;&#x628A;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x533A;&#x57DF;&#x4E2D;&#x3002;&#x6B21;&#x7B97;&#x6CD5;&#x6BCF;&#x6B21;&#x53EA;&#x5904;&#x7406;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x590D;&#x5236;&#x6210;&#x672C;&#x6BD4;&#x8F83;&#x5C0F;&#xFF0C;&#x540C;&#x65F6;&#x590D;&#x5236;&#x8FC7;&#x53BB;&#x4EE5;&#x540E;&#x8FD8;&#x80FD;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x5185;&#x5B58;&#x6574;&#x7406;&#xFF0C;&#x4E0D;&#x8FC7;&#x51FA;&#x73B0;&#x201C;&#x788E;&#x7247;&#x201D;&#x95EE;&#x9898;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x6B64;&#x7B97;&#x6CD5;&#x7684;&#x7F3A;&#x70B9;&#x4E5F;&#x662F;&#x5F88;&#x660E;&#x663E;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x9700;&#x8981;&#x4E24;&#x500D;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>4.&#x6807;&#x8BB0;-&#x6574;&#x7406;&#xFF08;Mark-Compact&#xFF09;</p>
+<p>&#x6B64;&#x7B97;&#x6CD5;&#x7ED3;&#x5408;&#x4E86; &#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x201D;&#x548C;&#x201C;&#x590D;&#x5236;&#x201D;&#x4E24;&#x4E2A;&#x7B97;&#x6CD5;&#x7684;&#x4F18;&#x70B9;&#x3002;&#x4E5F;&#x662F;&#x5206;&#x4E24;&#x9636;&#x6BB5;&#xFF0C;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x4ECE;&#x6839;&#x8282;&#x70B9;&#x5F00;&#x59CB;&#x6807;&#x8BB0;&#x6240;&#x6709;&#x88AB;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x904D;&#x5386;&#x6574;&#x4E2A;&#x5806;&#xFF0C;&#x628A;&#x6E05;&#x9664;&#x672A;&#x6807;&#x8BB0;&#x5BF9;&#x8C61;&#x5E76;&#x4E14;&#x628A;&#x5B58;&#x6D3B;&#x5BF9;&#x8C61; &#x201C;&#x538B;&#x7F29;&#x201D;&#x5230;&#x5806;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x5757;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x6392;&#x653E;&#x3002;&#x6B64;&#x7B97;&#x6CD5;&#x907F;&#x514D;&#x4E86;&#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x9664;&#x201D;&#x7684;&#x788E;&#x7247;&#x95EE;&#x9898;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x907F;&#x514D;&#x4E86;&#x201C;&#x590D;&#x5236;&#x201D;&#x7B97;&#x6CD5;&#x7684;&#x7A7A;&#x95F4;&#x95EE;&#x9898;&#x3002;</p>
+<p>5.&#x589E;&#x91CF;&#x6536;&#x96C6;&#xFF08;Incremental Collecting&#xFF09;</p>
+<p>&#x5B9E;&#x65BD;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B97;&#x6CD5;&#xFF0C;&#x5373;&#xFF1A;&#x5728;&#x5E94;&#x7528;&#x8FDB;&#x884C;&#x7684;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x3002;&#x4E0D;&#x77E5;&#x9053;&#x4EC0;&#x4E48;&#x539F;&#x56E0;JDK5.0&#x4E2D;&#x7684;&#x6536;&#x96C6;&#x5668;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x7B97;&#x6CD5;&#x7684;&#x3002;</p>
+<p>6.&#x5206;&#x4EE3;&#xFF08;Generational Collecting&#xFF09;</p>
+<p>&#x57FA;&#x4E8E;&#x5BF9;&#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x5206;&#x6790;&#x540E;&#x5F97;&#x51FA;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7B97;&#x6CD5;&#x3002;&#x628A;&#x5BF9;&#x8C61;&#x5206;&#x4E3A;&#x5E74;&#x9752;&#x4EE3;&#x3001;&#x5E74;&#x8001;&#x4EE3;&#x3001;&#x6301;&#x4E45;&#x4EE3;&#xFF0C;&#x5BF9;&#x4E0D;&#x540C;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7B97;&#x6CD5;&#xFF08;&#x4E0A;&#x8FF0;&#x65B9;&#x5F0F;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#xFF09;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x3002;&#x73B0;&#x5728;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF08;&#x4ECE;J2SE1.2&#x5F00;&#x59CB;&#xFF09;&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x6B64;&#x7B97;&#x6CD5;&#x7684;&#x3002;</p>
+<p>finalize&#xFF08;&#xFF09;:</p>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x4E00;&#x4E2A;finalize&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x4ECE;Object&#x7C7B;&#x7EE7;&#x627F;&#x6765;&#x7684;&#x3002;</p>
+<p>&#x5F53;&#x5783;&#x573E;&#x56DE;&#x6536;&#x786E;&#x5B9A;&#x4E0D;&#x5B58;&#x5728;&#x5BF9;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x66F4;&#x591A;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x7531;&#x5BF9;&#x8C61;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>Java &#x6280;&#x672F;&#x5141;&#x8BB8;&#x4F7F;&#x7528;finalize&#x65B9;&#x6CD5;&#x5728;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5C06;&#x5BF9;&#x8C61;&#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x6E05;&#x9664;&#x51FA;&#x53BB;&#x4E4B;&#x524D;&#x505A;&#x5FC5;&#x8981;&#x7684;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x4E00;&#x65E6;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x51C6;&#x5907;&#x597D;&#x91CA;&#x653E;&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x5C06;&#x9996;&#x5148;&#x8C03;&#x7528;&#x5176;finalize()&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x5783;&#x573E;&#x56DE;&#x6536;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x771F;&#x6B63;&#x56DE;&#x6536;&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x7684;&#x8BF4;finalize&#x65B9;&#x6CD5;&#x662F;&#x5728;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5220;&#x9664;&#x5BF9;&#x8C61;&#x4E4B;&#x524D;&#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8C03;&#x7528;&#x7684;</p>
+<p>System.gc&#xFF08;&#xFF09;&#xFF1A;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8C03;&#x7528;System.gc&#x65B9;&#x6CD5;&#xFF0C;&#x5EFA;&#x8BAE;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5DE5;&#x4F5C;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;&#x662F;&#x5EFA;&#x8BAE;&#xFF0C;&#x4F46;&#x865A;&#x62DF;&#x673A;&#x4F1A;&#x4E0D;&#x4F1A;&#x8FD9;&#x6837;&#x5E72;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x65E0;&#x6CD5;&#x9884;&#x77E5;&#xFF01;&#xFF09;</p>
+<p>&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x4E86;&#x89E3;finalize&#xFF08;&#xFF09;&#x548C;System.gc&#xFF08;&#xFF09;&#x7684;&#x4F7F;&#x7528;&#xFF1A;</p>
+<p>public class TestGC {</p>
+<p>public TestGC() {}</p>
+<p>\/\/&#x5F53;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x786E;&#x5B9A;&#x4E0D;&#x5B58;&#x5728;&#x5BF9;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x66F4;&#x591A;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x7531;&#x5BF9;&#x8C61;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>protected void finalize() {</p>
+<p>System.out.println(&quot;&#x6211;&#x5DF2;&#x7ECF;&#x88AB;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x56DE;&#x6536;&#x4E86;...&quot;);</p>
+<p>}</p>
+<p>public static void main(String [] args) {</p>
+<p>TestGC gc = new TestGC();</p>
+<p>gc = null;</p>
+<p>\/\/ &#x5EFA;&#x8BAE;&#x865A;&#x62DF;&#x673A;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5DE5;&#x4F5C;</p>
+<p>System.gc();</p>
+<p>}</p>
+<p>}</p>
+<p>&#x5982;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x6240;&#x793A;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x731C;&#x731C;&#x91CD;&#x5199;&#x7684;finalize&#x65B9;&#x6CD5;&#x4F1A;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#xFF1F;</p>
+<p>&#x7B54;&#x6848;&#x662F;&#xFF1A;&#x4E0D;&#x4E00;&#x5B9A;&#xFF01;</p>
+<p>&#x56E0;&#x4E3A;&#x65E0;&#x8BBA;&#x662F;&#x8BBE;&#x7F6E;gc&#x7684;&#x5F15;&#x7528;&#x4E3A;null&#x8FD8;&#x662F;&#x8C03;&#x7528;System.gc()&#x65B9;&#x6CD5;&#x90FD;&#x53EA;&#x662F;&quot;&#x5EFA;&#x8BAE;&quot;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x7EC8;&#x6240;&#x6709;&#x6743;&#x8FD8;&#x5728;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x624B;&#x4E2D;&#xFF0C;&#x5B83;&#x4F1A;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x9884;&#x77E5;&#xFF01;</p>
+<p>1&#xFF0E;fobj = new Object ( ) ;</p>
+<p>2&#xFF0E;fobj. Method ( ) ;</p>
+<p>3&#xFF0E;fobj = new Object ( ) ;</p>
+<p>4&#xFF0E;fobj. Method ( ) ;</p>
+<p>&#x95EE;&#xFF1A;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x7B2C;&#x51E0;&#x884C;&#x7684;fobj &#x7B26;&#x5408;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x7684;&#x6536;&#x96C6;&#x6807;&#x51C6;&#xFF1F;</p>
+<p>&#x7B54;&#xFF1A;&#x7B2C;3&#x884C;&#x3002;&#x56E0;&#x4E3A;&#x7B2C;3&#x884C;&#x7684;fobj&#x88AB;&#x8D4B;&#x4E86;&#x65B0;&#x503C;&#xFF0C;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5373;&#x6362;&#x4E86;&#x4E00;&#x5757;&#x65B0;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x4E5F;&#x76F8;&#x5F53;&#x4E8E;&#x4E3A;&#x7B2C;1&#x884C;&#x4E2D;&#x7684;fobj&#x8D4B;&#x4E86;null&#x503C;&#x3002;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x9898;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x3002;</p>
+<p>&#x8D44;&#x6E90;&#x7684;&#x56DE;&#x6536;&#xFF1A;</p>
+<p>&#x521A;&#x624D;&#x8BB2;&#x4E86;&#x4E00;&#x5806;&#x7406;&#x8BBA;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x70B9;&#x5B9E;&#x9645;&#x80FD;&#x7528;&#x4E0A;&#x7684;&#xFF0C;&#x8D44;&#x6E90;&#x7684;&#x56DE;&#x6536;&#xFF1A;</p>
+<p>Thread&#xFF08;&#x7EBF;&#x7A0B;&#xFF09;&#x56DE;&#x6536;&#xFF1A;</p>
+<p>&#x7EBF;&#x7A0B;&#x4E2D;&#x6D89;&#x53CA;&#x7684;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;GC&#x90FD;&#x4E0D;&#x80FD;&#x56DE;&#x6536;&#xFF08;Anything reachable by a thread cannot be GC&apos;d &#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x7EBF;&#x7A0B;&#x5F88;&#x5BB9;&#x6613;&#x9020;&#x6210;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x3002;</p>
+<p>&#x5982;&#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF1A;</p>
+<p>Thread t = new Thread() {</p>
+<p>public void run() {</p>
+<p>while (true) {</p>
+<p>try {</p>
+<p>Thread.sleep(1000);</p>
+<p>System.out.println(&quot;thread is running...&quot;);</p>
+<p>} catch (InterruptedException e) {</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>};</p>
+<p>t.start();</p>
+<p>t = null;</p>
+<p>System.gc();</p>
+<p>&#x5982;&#x4E0A;&#x5728;&#x7EBF;&#x7A0B;t&#x4E2D;&#x6BCF;&#x95F4;&#x9694;&#x4E00;&#x79D2;&#x8F93;&#x51FA;&#x4E00;&#x6BB5;&#x8BDD;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x7EBF;&#x7A0B;&#x8BBE;&#x7F6E;&#x4E3A;null&#x5E76;&#x4E14;&#x8C03;&#x7528;System.gc&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x7EBF;&#x7A0B;&#x5E76;&#x4E0D;&#x4F1A;&#x88AB;&#x56DE;&#x6536;&#xFF0C;&#x5B83;&#x4F1A;&#x4E00;&#x76F4;&#x7684;&#x8FD0;&#x884C;&#x4E0B;&#x53BB;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x79F0;&#x4E4B;&#x4E3A;&#x5783;&#x573E;&#x56DE;&#x6536;&#x6839;&#xFF08;GC Roots&#xFF09;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x5783;&#x573E;&#x56DE;&#x6536;&#x3002;&#x5F53;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x53EF;&#x8FBE;&#xFF0C;&#x603B;&#x662F;&#x4F7F;&#x7528;&#x5783;&#x573E;&#x56DE;&#x6536;&#x6839;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x53C2;&#x8003;&#x70B9;&#x3002;</p>
+<p>Cursor&#xFF08;&#x6E38;&#x6807;&#xFF09;&#x56DE;&#x6536;&#xFF1A;</p>
+<p>Cursor&#x662F;Android&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x540E;&#x5F97;&#x5230;&#x7684;&#x4E00;&#x4E2A;&#x7BA1;&#x7406;&#x6570;&#x636E;&#x96C6;&#x5408;&#x7684;&#x7C7B;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x7ED3;&#x675F;&#x4EE5;&#x540E;&#x3002;&#x5E94;&#x8BE5;&#x4FDD;&#x8BC1;Cursor&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x88AB;&#x53CA;&#x65F6;&#x7684;&#x91CA;&#x653E;&#x6389;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7B49;&#x5F85;GC&#x6765;&#x5904;&#x7406;&#x3002;&#x5E76;&#x4E14;Android&#x660E;&#x663E;&#x662F;&#x503E;&#x5411;&#x4E8E;&#x7F16;&#x7A0B;&#x8005;&#x624B;&#x52A8;&#x7684;&#x5C06;Cursor close&#x6389;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x6E90;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#xFF0C;&#x5982;&#x679C;&#x7B49;&#x5230;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x6765;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x4F1A;&#x7ED9;&#x7528;&#x6237;&#x4EE5;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4F7F;&#x7528;Cursor&#x7684;&#x65B9;&#x5F0F;&#x4E00;&#x822C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>Cursor cursor = null;</p>
+<p>try {</p>
+<p>cursor = mContext.getContentResolver().query(uri,null, null,null,null);</p>
+<p>if(cursor != null) {</p>
+<p>cursor.moveToFirst();</p>
+<p>\/\/do something</p>
+<p>}</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>} finally {</p>
+<p>if (cursor != null) {</p>
+<p>cursor.close();</p>
+<p>}</p>
+<p>}</p>
+<p>&#x6709;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5C06;Cursor&#x5173;&#x95ED;&#x6389;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x5728;CursorAdapter&#x4E2D;&#x5E94;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F46;&#x662F;&#x6CE8;&#x610F;&#xFF0C;CursorAdapter&#x5728;Acivity&#x7ED3;&#x675F;&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x81EA;&#x52A8;&#x7684;&#x5C06;Cursor&#x5173;&#x95ED;&#x6389;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5728;onDestroy&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x624B;&#x52A8;&#x5173;&#x95ED;&#x3002;</p>
+<p>@Override</p>
+<p>protected void onDestroy() {</p>
+<p>if (mAdapter != null &amp;&amp; mAdapter.getCurosr() != null) {</p>
+<p>mAdapter.getCursor().close();</p>
+<p>}</p>
+<p>super.onDestroy();</p>
+<p>}</p>
+<p>Receiver&#xFF08;&#x63A5;&#x6536;&#x5668;&#xFF09;&#x56DE;&#x6536;</p>
+<p>&#x8C03;&#x7528;registerReceiver()&#x540E;&#x672A;&#x8C03;&#x7528;unregisterReceiver().</p>
+<p>&#x5F53;&#x6211;&#x4EEC;Activity&#x4E2D;&#x4F7F;&#x7528;&#x4E86;registerReceiver()&#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#x4E86;BroadcastReceiver&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x5728;Activity&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x8C03;&#x7528;unregisterReceiver()&#x65B9;&#x6CD5;&#x53D6;&#x6D88;&#x6CE8;&#x518C;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;registerReceiver()&#x548C;unregisterReceiver()&#x65B9;&#x6CD5;&#x4E00;&#x5B9A;&#x8981;&#x6210;&#x5BF9;&#x51FA;&#x73B0;&#xFF0C;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91CD;&#x5199;Activity&#x7684;onDestory()&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p>@Override</p>
+<p>protected void onDestroy() {</p>
+<p>this.unregisterReceiver(receiver);</p>
+<p>super.onDestroy();</p>
+<p>}</p>
+<p>Stream\/File&#xFF08;&#x6D41;\/&#x6587;&#x4EF6;&#xFF09;&#x56DE;&#x6536;&#xFF1A;</p>
+<p>&#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x5404;&#x79CD;&#x6D41;&#xFF0C;&#x6587;&#x4EF6;&#x8D44;&#x6E90;&#x7B49;&#x7B49;&#x5982;&#xFF1A;</p>
+<p>InputStream\/OutputStream&#xFF0C;SQLiteOpenHelper&#xFF0C;SQLiteDatabase&#xFF0C;Cursor&#xFF0C;&#x6587;&#x4EF6;&#xFF0C;I\/O&#xFF0C;Bitmap&#x56FE;&#x7247;&#x7B49;&#x64CD;&#x4F5C;&#x7B49;&#x90FD;&#x5E94;&#x8BE5;&#x8BB0;&#x5F97;&#x663E;&#x793A;&#x5173;&#x95ED;&#x3002;</p>
+<p>&#x548C;&#x4E4B;&#x524D;&#x4ECB;&#x7ECD;&#x7684;Cursor&#x9053;&#x7406;&#x7C7B;&#x4F3C;&#xFF0C;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;&#x3002;</p>
+<p>OnTrimMemory &#x56DE;&#x8C03;&#x662F; Android 4.0 &#x4E4B;&#x540E;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;API&#xFF0C;&#x8FD9;&#x4E2A; API &#x662F;&#x63D0;&#x4F9B;&#x7ED9;&#x5F00;&#x53D1;&#x8005;&#x7684;&#xFF0C;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x63D0;&#x793A;&#x5F00;&#x53D1;&#x8005;&#x5728;&#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x8FC7;&#x5904;&#x7406;&#x90E8;&#x5206;&#x8D44;&#x6E90;&#x6765;&#x91CA;&#x653E;&#x5185;&#x5B58;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x88AB; Android &#x7CFB;&#x7EDF;&#x6740;&#x6B7B;&#x3002;&#x8FD9;&#x6837;&#x5E94;&#x7528;&#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901F;&#x5EA6;&#x5C31;&#x4F1A;&#x6BD4;&#x8F83;&#x5FEB;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x901A;&#x8FC7;&#x95EE;&#x7B54;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4ECE;&#x5404;&#x4E2A;&#x65B9;&#x9762;&#x6765;&#x8BB2;&#x89E3; OnTrimMemory &#x56DE;&#x8C03;&#x7684;&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#x548C;&#x6548;&#x679C;&#x3002;&#x60F3;&#x8981;&#x5F00;&#x53D1;&#x9AD8;&#x6027;&#x80FD;&#x4E14;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x826F;&#x597D;&#x7684; Android &#x5E94;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x9519;&#x8FC7;&#x3002;</p>
+<h2 id="0-ontrimmemory&#x56DE;&#x8C03;&#x7684;&#x4F5C;&#x7528;&#xFF1F;"><strong>0. OnTrimMemory&#x56DE;&#x8C03;&#x7684;&#x4F5C;&#x7528;&#xFF1F;</strong></h2>
+<p>OnTrimMemory&#x662F;Android&#x5728;4.0&#x4E4B;&#x540E;&#x52A0;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#xFF0C;&#x4EFB;&#x4F55;&#x5B9E;&#x73B0;&#x4E86;ComponentCallbacks2&#x63A5;&#x53E3;&#x7684;&#x7C7B;&#x90FD;&#x53EF;&#x4EE5;&#x91CD;&#x5199;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#xFF0E;OnTrimMemory&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x5C31;&#x662F;<strong>&#x6307;&#x5BFC;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x8FDB;&#x884C;&#x81EA;&#x8EAB;&#x7684;&#x5185;&#x5B58;&#x91CA;&#x653E;&#xFF0C;&#x4EE5;&#x907F;&#x514D;&#x88AB;&#x7CFB;&#x7EDF;&#x76F4;&#x63A5;&#x6740;&#x6389;&#xFF0C;&#x63D0;&#x9AD8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x7528;&#x6237;&#x4F53;&#x9A8C;.</strong></p>
+<p>Android&#x7CFB;&#x7EDF;&#x4F1A;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7B49;&#x7EA7;&#x7684;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4F20;&#x5165;&#x5BF9;&#x5E94;&#x7684;&#x7B49;&#x7EA7;&#xFF1A;</p>
+<ul>
+<li><p>TRIM_MEMORY_UI_HIDDEN &#x8868;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;<strong>&#x6240;&#x6709;UI&#x754C;&#x9762;</strong>&#x88AB;&#x9690;&#x85CF;&#x4E86;&#xFF0C;&#x5373;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x4E86;Home&#x952E;&#x6216;&#x8005;Back&#x952E;&#x5BFC;&#x81F4;&#x5E94;&#x7528;&#x7684;UI&#x754C;&#x9762;&#x4E0D;&#x53EF;&#x89C1;&#xFF0E;&#x8FD9;&#x65F6;&#x5019;&#x5E94;&#x8BE5;&#x91CA;&#x653E;&#x4E00;&#x4E9B;&#x8D44;&#x6E90;&#xFF0E;</p>
+<p>TRIM_MEMORY_UI_HIDDEN&#x8FD9;&#x4E2A;&#x7B49;&#x7EA7;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#xFF0C;&#x548C;&#x4E0B;&#x9762;&#x516D;&#x4E2A;&#x7684;&#x5173;&#x7CFB;&#x4E0D;&#x662F;&#x5F88;&#x5F3A;&#xFF0C;&#x6240;&#x4EE5;&#x5355;&#x72EC;&#x8BF4;&#xFF0E;</p>
+</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x4E09;&#x4E2A;&#x7B49;&#x7EA7;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x771F;&#x6B63;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x56DE;&#x8C03;&#xFF1A;</p>
+<ul>
+<li>TRIM_MEMORY_RUNNING_MODERATE &#x8868;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x4F1A;&#x88AB;&#x6740;&#x6389;&#x3002;&#x4F46;&#x662F;&#x76EE;&#x524D;&#x624B;&#x673A;&#x7684;&#x5185;&#x5B58;&#x5DF2;&#x7ECF;&#x6709;&#x70B9;&#x4F4E;&#x4E86;&#xFF0C;&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x4F1A;&#x5F00;&#x59CB;&#x6839;&#x636E;LRU&#x7F13;&#x5B58;&#x89C4;&#x5219;&#x6765;&#x53BB;&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;&#x4E86;&#x3002;</li>
+<li>TRIM_MEMORY_RUNNING_LOW &#x8868;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x4F1A;&#x88AB;&#x6740;&#x6389;&#x3002;&#x4F46;&#x662F;&#x76EE;&#x524D;&#x624B;&#x673A;&#x7684;&#x5185;&#x5B58;&#x5DF2;&#x7ECF;&#x975E;&#x5E38;&#x4F4E;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x53BB;&#x91CA;&#x653E;&#x6389;&#x4E00;&#x4E9B;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x4EE5;&#x63D0;&#x5347;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x540C;&#x65F6;&#x8FD9;&#x4E5F;&#x4F1A;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x5230;&#x6211;&#x4EEC;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#x3002;</li>
+<li>TRIM_MEMORY_RUNNING_CRITICAL &#x8868;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4ECD;&#x7136;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x662F;&#x7CFB;&#x7EDF;&#x5DF2;&#x7ECF;&#x6839;&#x636E;LRU&#x7F13;&#x5B58;&#x89C4;&#x5219;&#x6740;&#x6389;&#x4E86;&#x5927;&#x90E8;&#x5206;&#x7F13;&#x5B58;&#x7684;&#x8FDB;&#x7A0B;&#x4E86;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5E94;&#x5F53;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x53BB;&#x91CA;&#x653E;&#x4EFB;&#x4F55;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x4E0D;&#x7136;&#x7684;&#x8BDD;&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x4F1A;&#x7EE7;&#x7EED;&#x6740;&#x6389;&#x6240;&#x6709;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x5F00;&#x59CB;&#x6740;&#x6389;&#x4E00;&#x4E9B;&#x672C;&#x6765;&#x5E94;&#x5F53;&#x4FDD;&#x6301;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+</ul>
+<p>&#x5F53;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x7F13;&#x5B58;&#x7684;&#xFF0C;&#x5219;&#x4F1A;&#x6536;&#x5230;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x56DE;&#x8C03;&#xFF1A;</p>
+<ul>
+<li>TRIM_MEMORY_BACKGROUND &#x8868;&#x793A;&#x624B;&#x673A;&#x76EE;&#x524D;&#x5185;&#x5B58;&#x5DF2;&#x7ECF;&#x5F88;&#x4F4E;&#x4E86;&#xFF0C;&#x7CFB;&#x7EDF;&#x51C6;&#x5907;&#x5F00;&#x59CB;&#x6839;&#x636E;LRU&#x7F13;&#x5B58;&#x6765;&#x6E05;&#x7406;&#x8FDB;&#x7A0B;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x5728;LRU&#x7F13;&#x5B58;&#x5217;&#x8868;&#x7684;&#x6700;&#x8FD1;&#x4F4D;&#x7F6E;&#xFF0C;&#x662F;&#x4E0D;&#x592A;&#x53EF;&#x80FD;&#x88AB;&#x6E05;&#x7406;&#x6389;&#x7684;&#xFF0C;&#x4F46;&#x8FD9;&#x65F6;&#x53BB;&#x91CA;&#x653E;&#x6389;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x6062;&#x590D;&#x7684;&#x8D44;&#x6E90;&#x80FD;&#x591F;&#x8BA9;&#x624B;&#x673A;&#x7684;&#x5185;&#x5B58;&#x53D8;&#x5F97;&#x6BD4;&#x8F83;&#x5145;&#x8DB3;&#xFF0C;&#x4ECE;&#x800C;&#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x66F4;&#x957F;&#x65F6;&#x95F4;&#x5730;&#x4FDD;&#x7559;&#x5728;&#x7F13;&#x5B58;&#x5F53;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x5F53;&#x7528;&#x6237;&#x8FD4;&#x56DE;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x65F6;&#x4F1A;&#x611F;&#x89C9;&#x975E;&#x5E38;&#x987A;&#x7545;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7ECF;&#x5386;&#x4E86;&#x4E00;&#x6B21;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</li>
+<li>TRIM_MEMORY_MODERATE &#x8868;&#x793A;&#x624B;&#x673A;&#x76EE;&#x524D;&#x5185;&#x5B58;&#x5DF2;&#x7ECF;&#x5F88;&#x4F4E;&#x4E86;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x5904;&#x4E8E;LRU&#x7F13;&#x5B58;&#x5217;&#x8868;&#x7684;&#x4E2D;&#x95F4;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x624B;&#x673A;&#x5185;&#x5B58;&#x8FD8;&#x5F97;&#x4E0D;&#x5230;&#x8FDB;&#x4E00;&#x6B65;&#x91CA;&#x653E;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x5C31;&#x6709;&#x88AB;&#x7CFB;&#x7EDF;&#x6740;&#x6389;&#x7684;&#x98CE;&#x9669;&#x4E86;&#x3002;</li>
+<li>TRIM_MEMORY_COMPLETE &#x8868;&#x793A;&#x624B;&#x673A;&#x76EE;&#x524D;&#x5185;&#x5B58;&#x5DF2;&#x7ECF;&#x5F88;&#x4F4E;&#x4E86;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x5904;&#x4E8E;LRU&#x7F13;&#x5B58;&#x5217;&#x8868;&#x7684;&#x6700;&#x8FB9;&#x7F18;&#x4F4D;&#x7F6E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x6700;&#x4F18;&#x5148;&#x8003;&#x8651;&#x6740;&#x6389;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5E94;&#x5F53;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x628A;&#x4E00;&#x5207;&#x53EF;&#x4EE5;&#x91CA;&#x653E;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x8FDB;&#x884C;&#x91CA;&#x653E;&#x3002;</li>
+</ul>
+<h2 id="1-&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;ontrimmemory&#x56DE;&#x8C03;&#xFF1F;"><strong>1. &#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;OnTrimMemory&#x56DE;&#x8C03;&#xFF1F;</strong></h2>
+<ul>
+<li>Application.onTrimMemory()</li>
+<li>Activity.onTrimMemory()</li>
+<li>Fragment.OnTrimMemory()</li>
+<li>Service.onTrimMemory()</li>
+<li>ContentProvider.OnTrimMemory()</li>
+</ul>
+<h2 id="2-ontrimmemory&#x56DE;&#x8C03;&#x4E2D;&#x53EF;&#x4EE5;&#x91CA;&#x653E;&#x54EA;&#x4E9B;&#x8D44;&#x6E90;&#xFF1F;"><strong>2. OnTrimMemory&#x56DE;&#x8C03;&#x4E2D;&#x53EF;&#x4EE5;&#x91CA;&#x653E;&#x54EA;&#x4E9B;&#x8D44;&#x6E90;&#xFF1F;</strong></h2>
+<p>&#x901A;&#x5E38;&#x5728;&#x67B6;&#x6784;&#x9636;&#x6BB5;&#x5C31;&#x8981;&#x8003;&#x8651;&#x6E05;&#x695A;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x54EA;&#x4E9B;&#x4E1C;&#x897F;&#x662F;&#x8981;&#x5E38;&#x9A7B;&#x5185;&#x5B58;&#x7684;&#xFF0C;&#x6709;&#x54EA;&#x4E9B;&#x662F;&#x4F34;&#x968F;&#x754C;&#x9762;&#x5B58;&#x5728;&#x7684;&#xFF0E;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x8D44;&#x6E90;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x91CA;&#x653E;&#xFF1A;</p>
+<ul>
+<li>&#x7F13;&#x5B58; &#x7F13;&#x5B58;&#x5305;&#x62EC;&#x4E00;&#x4E9B;&#x6587;&#x4EF6;&#x7F13;&#x5B58;&#xFF0C;&#x56FE;&#x7247;&#x7F13;&#x5B58;&#x7B49;&#xFF0C;&#x5728;&#x7528;&#x6237;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x8FD9;&#x4E9B;&#x7F13;&#x5B58;&#x5F88;&#x6709;&#x4F5C;&#x7528;&#xFF0C;&#x4F46;&#x5F53;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;UI&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E9B;&#x7F13;&#x5B58;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x6E05;&#x9664;&#x4EE5;&#x51CF;&#x5C11;&#x5185;&#x5B58;&#x7684;&#x4F7F;&#x7528;&#xFF0E;&#x6BD4;&#x5982;&#x7B2C;&#x4E09;&#x65B9;&#x56FE;&#x7247;&#x5E93;&#x7684;&#x7F13;&#x5B58;&#xFF0E;</li>
+<li>&#x4E00;&#x4E9B;&#x52A8;&#x6001;&#x751F;&#x6210;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x7684;View&#xFF0E; &#x8FD9;&#x4E9B;&#x52A8;&#x6001;&#x751F;&#x6210;&#x548C;&#x6DFB;&#x52A0;&#x7684;View&#x4E14;&#x5C11;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x4F7F;&#x7528;&#x5230;&#x7684;View&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x88AB;&#x91CA;&#x653E;&#xFF0C;&#x4E0B;&#x6B21;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x518D;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x751F;&#x6210;&#x5373;&#x53EF;&#xFF0E;&#x6BD4;&#x5982;&#x539F;&#x751F;&#x684C;&#x9762;&#x4E2D;&#xFF0C;&#x4F1A;&#x5728;OnTrimMemory&#x7684;TRIM_MEMORY_MODERATE&#x7B49;&#x7EA7;&#x4E2D;&#xFF0C;&#x91CA;&#x653E;&#x6240;&#x6709;AppsCustomizePagedView&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x5728;&#x4F4E;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x684C;&#x9762;&#x4E0D;&#x4F1A;&#x8F7B;&#x6613;&#x88AB;&#x6740;&#x6389;&#xFF0E;</li>
+</ul>
+<h4 id="21-&#x4F8B;&#x5B50;&#xFF1A;&#x91CA;&#x653E;&#x4E0D;&#x5E38;&#x7528;&#x5230;&#x7684;view&#xFF0E;"><strong>2.1 &#x4F8B;&#x5B50;&#xFF1A;&#x91CA;&#x653E;&#x4E0D;&#x5E38;&#x7528;&#x5230;&#x7684;View&#xFF0E;</strong></h4>
+<p>&#x4EE3;&#x7801;&#x51FA;&#x5904;&#xFF1A;Launcher</p>
+<p>Launcher.java:</p>
+<table>
+<thead>
+<tr>
+<th>1234567</th>
+<th>@Overridepublic void onTrimMemory(int level) {    super.onTrimMemory(level);    if (level &gt;= ComponentCallbacks2.TRIM_MEMORY_MODERATE) {        mAppsCustomizeTabHost.onTrimMemory();    }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>AppsCustomizeTabHost.java:</p>
+<table>
+<thead>
+<tr>
+<th>123456</th>
+<th>public void onTrimMemory() {    mContent.setVisibility(GONE);    \/\/ Clear the widget pages of all their subviews - this will trigger the widget previews    \/\/ to delete their bitmaps    mPagedView.clearAllWidgetPages();}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>AppsCustomizePagedView.java:</p>
+<table>
+<thead>
+<tr>
+<th>1234567891011</th>
+<th>public void clearAllWidgetPages() {    cancelAllTasks();    int count = getChildCount();    for (int i = 0; i &lt; count; i++) {        View v = getPageAt(i);        if (v instanceof PagedViewGridLayout) {            ((PagedViewGridLayout) v).removeAllViewsOnPage();            mDirtyPageContent.set(i, true);        }    }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>PagedViewGridLayout.java</p>
+<table>
+<thead>
+<tr>
+<th>123456</th>
+<th>@Overridepublic void removeAllViewsOnPage() {    removeAllViews();    mOnLayoutListener = null;    setLayerType(LAYER_TYPE_NONE, null);}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="22-&#x4F8B;&#x5B50;-&#x6E05;&#x9664;&#x7F13;&#x5B58;"><strong>2.2 &#x4F8B;&#x5B50;: &#x6E05;&#x9664;&#x7F13;&#x5B58;</strong></h4>
+<p>&#x4EE3;&#x7801;&#x51FA;&#x5904;&#xFF1A;Contact</p>
+<table>
+<thead>
+<tr>
+<th>12345678910111213</th>
+<th>@Overridepublic void onTrimMemory(int level) {    if (level &gt;= ComponentCallbacks2.TRIM_MEMORY_MODERATE) {        \/\/ Clear the caches.  Note all pending requests will be removed too.        clear();    }}public void clear() {    mPendingRequests.clear();    mBitmapHolderCache.evictAll();    mBitmapCache.evictAll();}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-ontrimmemory&#x548C;onstop&#x7684;&#x5173;&#x7CFB;&#xFF1F;"><strong>3. OnTrimMemory&#x548C;onStop&#x7684;&#x5173;&#x7CFB;&#xFF1F;</strong></h2>
+<p>onTrimMemory()&#x65B9;&#x6CD5;&#x4E2D;&#x7684;TRIM_MEMORY_UI_HIDDEN&#x56DE;&#x8C03;&#x53EA;&#x6709;&#x5F53;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6240;&#x6709;UI&#x7EC4;&#x4EF6;&#x5168;&#x90E8;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x89E6;&#x53D1;&#xFF0C;&#x8FD9;&#x548C;onStop()&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x6709;&#x5F88;&#x5927;&#x533A;&#x522B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;onStop()&#x65B9;&#x6CD5;&#x53EA;&#x662F;&#x5F53;&#x4E00;&#x4E2A;Activity&#x5B8C;&#x5168;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x7528;&#x6237;&#x6253;&#x5F00;&#x4E86;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x53E6;&#x4E00;&#x4E2A;Activity&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;onStop()&#x65B9;&#x6CD5;&#x4E2D;&#x53BB;&#x91CA;&#x653E;&#x4E00;&#x4E9B;Activity&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x53D6;&#x6D88;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x6216;&#x8005;&#x6CE8;&#x9500;&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;&#x7B49;&#xFF0C;&#x4F46;&#x662F;&#x50CF;UI&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#x5E94;&#x8BE5;&#x4E00;&#x76F4;&#x8981;&#x7B49;&#x5230;onTrimMemory(TRIM_MEMORY_UI_HIDDEN)&#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#x4E4B;&#x540E;&#x624D;&#x53BB;&#x91CA;&#x653E;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5982;&#x679C;&#x7528;&#x6237;&#x53EA;&#x662F;&#x4ECE;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x7684;&#x4E00;&#x4E2A;Activity&#x56DE;&#x5230;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x4E2A;Activity&#xFF0C;&#x754C;&#x9762;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x5347;&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;onTrimMemory&#x7684;TRIM_MEMORY_UI_HIDDEN &#x7B49;&#x7EA7;&#x662F;&#x5728;onStop&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x7684;&#xFF0E;</p>
+<h2 id="4-ontrimmemory&#x548C;onlowmemory&#x7684;&#x5173;&#x7CFB;&#xFF1F;"><strong>4. OnTrimMemory&#x548C;OnLowMemory&#x7684;&#x5173;&#x7CFB;&#xFF1F;</strong></h2>
+<p>&#x5728;&#x5F15;&#x5165;OnTrimMemory&#x4E4B;&#x524D;&#x90FD;&#x662F;&#x4F7F;&#x7528;OnLowMemory&#x56DE;&#x8C03;&#xFF0C;&#x9700;&#x8981;&#x77E5;&#x9053;&#x7684;&#x662F;&#xFF0C;OnLowMemory&#x5927;&#x6982;&#x548C;OnTrimMemory&#x4E2D;&#x7684;TRIM_MEMORY_COMPLETE&#x7EA7;&#x522B;&#x76F8;&#x540C;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x517C;&#x5BB9;api&lt;14&#x7684;&#x673A;&#x5668;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x7528;OnLowMemory&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x5426;&#x5219;&#x4F60;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;OnLowMemory&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;OnTrimMemory&#x5373;&#x53EF;&#xFF0E;</p>
+<h2 id="5-&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8C03;&#x7528;ontrimmemory&#xFF1F;"><strong>5. &#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8C03;&#x7528;OnTrimMemory&#xFF1F;</strong></h2>
+<p>&#x5C3D;&#x7BA1;&#x7CFB;&#x7EDF;&#x5728;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x7684;&#x65F6;&#x5019;&#x6740;&#x8FDB;&#x7A0B;&#x7684;&#x987A;&#x5E8F;&#x662F;&#x6309;&#x7167;LRU Cache&#x4E2D;&#x4ECE;&#x4F4E;&#x5230;&#x9AD8;&#x6765;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x8003;&#x8651;&#x6740;&#x6389;&#x90A3;&#x4E9B;&#x5360;&#x7528;&#x5185;&#x5B58;&#x8F83;&#x9AD8;&#x7684;&#x5E94;&#x7528;&#x6765;&#x8BA9;&#x7CFB;&#x7EDF;&#x66F4;&#x5FEB;&#x5730;&#x83B7;&#x5F97;&#x66F4;&#x591A;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x5360;&#x7528;&#x5185;&#x5B58;&#x8F83;&#x5C0F;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x4E0D;&#x88AB;&#x6740;&#x6389;&#x7684;&#x51E0;&#x7387;&#xFF0C;&#x4ECE;&#x800C;&#x5FEB;&#x901F;&#x5730;&#x6062;&#x590D;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x88AB;&#x6740;&#x6389;&#xFF0C;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x662F;&#x70ED;&#x542F;&#x52A8;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x662F;&#x51B7;&#x542F;&#x52A8;&#xFF0C;&#x5176;&#x901F;&#x5EA6;&#x5DEE;&#x5728;2~3&#x500D;&#xFF09;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x8BF4;&#x5728;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;OnTrimMemory&#x56DE;&#x8C03;&#x4E2D;&#x91CA;&#x653E;&#x81EA;&#x5DF1;&#x7684;UI&#x8D44;&#x6E90;&#xFF0C;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x5730;&#x63D0;&#x9AD8;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x3002;</p>
+<h2 id="6-&#x6709;&#x54EA;&#x4E9B;&#x5178;&#x578B;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1F;"><strong>6. &#x6709;&#x54EA;&#x4E9B;&#x5178;&#x578B;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1F;</strong></h2>
+<h3 id="61-&#x5E38;&#x9A7B;&#x5185;&#x5B58;&#x7684;&#x5E94;&#x7528;"><strong>6.1 &#x5E38;&#x9A7B;&#x5185;&#x5B58;&#x7684;&#x5E94;&#x7528;</strong></h3>
+<p>&#x4E00;&#x4E9B;&#x5E38;&#x9A7B;&#x5185;&#x5B58;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x6BD4;&#x5982;Launcher&#x3001;&#x5B89;&#x5168;&#x4E2D;&#x5FC3;&#x3001;&#x7535;&#x8BDD;&#x7B49;&#xFF0C;&#x5728;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x8FC7;&#x8981;&#x9000;&#x51FA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x8C03;&#x7528;OnTrimMemory&#x6765;&#x53CA;&#x65F6;&#x91CA;&#x653E;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x591A;&#x4F59;&#x7684;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#xFF1A;&#x6BD4;&#x5982;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;View&#x3001;&#x56FE;&#x7247;&#x7F13;&#x5B58;&#x3001;Fragment&#x7B49;&#x3002;</p>
+<h3 id="62-&#x6709;&#x540E;&#x53F0;service&#x8FD0;&#x884C;&#x7684;&#x5E94;&#x7528;"><strong>6.2 &#x6709;&#x540E;&#x53F0;Service&#x8FD0;&#x884C;&#x7684;&#x5E94;&#x7528;</strong></h3>
+<p>&#x8FD9;&#x4E9B;&#x5E94;&#x7528;&#x4E0D;&#x662F;&#x5E38;&#x9A7B;&#x5185;&#x5B58;&#x7684;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x53EF;&#x4EE5;&#x88AB;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x6740;&#x6389;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x7528;&#x6237;&#x4E0D;&#x4F1A;&#x53BB;&#x6740;&#x3002;</p>
+<p>&#x8FD9;&#x7C7B;&#x5E94;&#x7528;&#x5305;&#x62EC;&#xFF1A;&#x97F3;&#x4E50;&#x3001;&#x4E0B;&#x8F7D;&#x7B49;&#x3002;&#x7528;&#x6237;&#x9000;&#x51FA;UI&#x754C;&#x9762;&#x540E;&#xFF0C;&#x97F3;&#x4E50;&#x8FD8;&#x5728;&#x7EE7;&#x7EED;&#x64AD;&#x653E;&#xFF0C;&#x4E0B;&#x8F7D;&#x7A0B;&#x5E8F;&#x8FD8;&#x5728;&#x8FD0;&#x884C;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x97F3;&#x4E50;&#x5E94;&#x8BE5;&#x91CA;&#x653E;&#x90E8;&#x5206;UI&#x8D44;&#x6E90;&#x548C;Cache&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./引用类型.html" class="navigation navigation-prev " aria-label="Previous page: 引用类型"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./分析工具.html" class="navigation navigation-next " aria-label="Next page: 优化工具"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

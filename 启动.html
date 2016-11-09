@@ -1,0 +1,553 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>启动 | The Performance Lifecycle</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./电量.html" />
+    
+    
+    <link rel="prev" href="./网络.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.2"
+        data-chapter-title="启动"
+        data-filepath="启动.md"
+        data-basepath="."
+        data-revision="Wed Nov 09 2016 15:17:35 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        1.内存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="模型.html">
+            
+                
+                    <a href="./模型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        模型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="内存泄露.html">
+            
+                
+                    <a href="./内存泄露.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        内存泄露
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="图片.html">
+            
+                
+                    <a href="./图片.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        图片
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="引用类型.html">
+            
+                
+                    <a href="./引用类型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        引用类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="垃圾回收.html">
+            
+                
+                    <a href="./垃圾回收.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        垃圾回收
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="分析工具.html">
+            
+                
+                    <a href="./分析工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="mat.html">
+            
+                
+                    <a href="./mat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        MAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="systrace.html">
+            
+                
+                    <a href="./systrace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Systrace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="lint.html">
+            
+                
+                    <a href="./lint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        Lint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="leakcanary.html">
+            
+                
+                    <a href="./leakcanary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.4.</b>
+                        
+                        LeakCanary
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="界面.html">
+            
+                
+                    <a href="./界面.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        2.界面
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="工具.html">
+            
+                
+                    <a href="./工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="hierarchy-viewer.html">
+            
+                
+                    <a href="./hierarchy-viewer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        Hierarchy Viewer:
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="strict-mode.html">
+            
+                
+                    <a href="./strict-mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        Strict Mode
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="过度绘制.html">
+            
+                
+                    <a href="./过度绘制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        过度绘制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="网络.html">
+            
+                
+                    <a href="./网络.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        3.响应时间
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" >
+            
+            <span><b>3.1.</b> 网络</span>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="启动.html">
+            
+                
+                    <a href="./启动.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        启动
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="电量.html">
+            
+                
+                    <a href="./电量.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        4.电量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="瘦身.html">
+            
+                
+                    <a href="./瘦身.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        5.瘦身
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >The Performance Lifecycle</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="1&#xFF09;app-launch-time-101"><strong>1&#xFF09;App Launch time 101</strong></h2>
+<p>&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x610F;&#x4E49;&#x91CD;&#x5927;&#xFF0C;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x8D8A;&#x77ED;&#xFF0C;&#x7528;&#x6237;&#x624D;&#x8D8A;&#x6709;&#x8010;&#x5FC3;&#x7B49;&#x5F85;&#x6253;&#x5F00;&#x8FD9;&#x4E2A;APP&#x8FDB;&#x884C;&#x4F7F;&#x7528;&#xFF0C;&#x53CD;&#x4E4B;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x8D8A;&#x957F;&#xFF0C;&#x7528;&#x6237;&#x5219;&#x8D8A;&#x6709;&#x53EF;&#x80FD;&#x6765;&#x4E0D;&#x53CA;&#x7B49;&#x5230;APP&#x6253;&#x5F00;&#x5C31;&#x5DF2;&#x7ECF;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;APP&#x4E86;&#x3002;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x90A3;&#x4E9B;&#x590D;&#x6742;&#x9519;&#x8BEF;&#x7684;&#x64CD;&#x4F5C;&#x5F88;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4E25;&#x91CD;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;Android&#x7CFB;&#x7EDF;&#x4F1A;&#x6839;&#x636E;&#x7528;&#x6237;&#x7684;&#x64CD;&#x4F5C;&#x884C;&#x4E3A;&#x8C03;&#x6574;&#x7A0B;&#x5E8F;&#x7684;&#x663E;&#x793A;&#x7B56;&#x7565;&#xFF0C;&#x7528;&#x6765;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x663E;&#x793A;&#x6027;&#x80FD;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4E00;&#x65E6;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x684C;&#x9762;&#x56FE;&#x6807;&#xFF0C;Android&#x7CFB;&#x7EDF;&#x4F1A;&#x7ACB;&#x5373;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x6301;&#x663E;&#x793A;&#x76F4;&#x5230;&#x753B;&#x9762;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6210;&#x529F;&#x52A0;&#x8F7D;&#x5E76;&#x7ED8;&#x5236;&#x5B8C;&#x7B2C;&#x4E00;&#x5E27;&#x3002;&#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#x5E38;&#x89C1;&#x4E8E;&#x7A0B;&#x5E8F;&#x7684;&#x51B7;&#x542F;&#x52A8;&#xFF0C;&#x6216;&#x8005;&#x7A0B;&#x5E8F;&#x7684;&#x70ED;&#x542F;&#x52A8;&#x573A;&#x666F;&#xFF08;&#x7A0B;&#x5E8F;&#x4ECE;&#x540E;&#x53F0;&#x88AB;&#x5524;&#x8D77;&#x6216;&#x8005;&#x4ECE;&#x5176;&#x4ED6;APP&#x754C;&#x9762;&#x5207;&#x6362;&#x56DE;&#x6765;&#xFF09;&#x3002;&#x90A3;&#x4E48;&#x5173;&#x952E;&#x7684;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x7528;&#x6237;&#x5F88;&#x53EF;&#x80FD;&#x4F1A;&#x56E0;&#x4E3A;&#x4ECE;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#x5230;&#x663E;&#x793A;&#x753B;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#x8017;&#x65F6;&#x8FC7;&#x957F;&#x800C;&#x611F;&#x5230;&#x538C;&#x70E6;&#xFF0C;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x7528;&#x6237;&#x6CA1;&#x6709;&#x6765;&#x5F97;&#x53CA;&#x7B49;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5B8C;&#x6BD5;&#x5C31;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;APP&#x4E86;&#x3002;&#x66F4;&#x4E25;&#x91CD;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x7A0B;&#x5E8F;&#x51FA;&#x73B0;ANR&#x3002;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x51FA;&#x73B0;&#x8FD9;&#x4E24;&#x79CD;&#x7CDF;&#x7CD5;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x4ECE;&#x6280;&#x672F;&#x89D2;&#x5EA6;&#x6765;&#x8BF4;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x684C;&#x9762;&#x56FE;&#x6807;&#x5F00;&#x59CB;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x7ACB;&#x5373;&#x4E3A;&#x8FD9;&#x4E2A;APP&#x521B;&#x5EFA;&#x72EC;&#x7ACB;&#x7684;&#x4E13;&#x5C5E;&#x8FDB;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x663E;&#x793A;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x76F4;&#x5230;APP&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x8FDB;&#x7A0B;&#x91CC;&#x9762;&#x5B8C;&#x6210;&#x4E86;&#x7A0B;&#x5E8F;&#x7684;&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x4E3B;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#x4E86;Activity&#x7684;&#x521D;&#x59CB;&#x5316;&#x663E;&#x793A;&#x64CD;&#x4F5C;&#xFF0C;&#x518D;&#x7136;&#x540E;&#x7CFB;&#x7EDF;&#x8FDB;&#x7A0B;&#x5C31;&#x4F1A;&#x628A;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#x66FF;&#x6362;&#x6210;APP&#x7684;&#x663E;&#x793A;&#x7A97;&#x53E3;&#x3002;</p>
+<p><img src="http://hukai.me/images/android_perf_6_launch_time_start_process.png" alt=""></p>
+<p>&#x4E0A;&#x8FF0;&#x6D41;&#x7A0B;&#x91CC;&#x9762;&#x7684;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x6B65;&#x9AA4;&#x90FD;&#x662F;&#x7531;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x7684;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x662F;&#x5BF9;&#x4E8E;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x63A7;&#x5236;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x7279;&#x522B;&#x5173;&#x6CE8;&#x7684;&#x5730;&#x65B9;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x5904;&#xFF1A;</p>
+<ul>
+<li>1&#xFF09;Activity&#x7684;onCreate&#x6D41;&#x7A0B;&#xFF0C;&#x7279;&#x522B;&#x662F;UI&#x7684;&#x5E03;&#x5C40;&#x4E0E;&#x6E32;&#x67D3;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x5E03;&#x5C40;&#x8FC7;&#x4E8E;&#x590D;&#x6742;&#x5F88;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4E25;&#x91CD;&#x7684;&#x542F;&#x52A8;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;</li>
+<li>2&#xFF09;Application&#x7684;onCreate&#x6D41;&#x7A0B;&#xFF0C;&#x5BF9;&#x4E8E;&#x5927;&#x578B;&#x7684;APP&#x6765;&#x8BF4;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x5728;&#x8FD9;&#x91CC;&#x505A;&#x5927;&#x91CF;&#x7684;&#x901A;&#x7528;&#x7EC4;&#x4EF6;&#x7684;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>3&#xFF09;&#x76EE;&#x524D;&#x6709;&#x90E8;&#x5206;APP&#x4F1A;&#x63D0;&#x4F9B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x505A;&#x6210;&#x54C1;&#x724C;&#x5BA3;&#x4F20;&#x754C;&#x9762;&#x6216;&#x8005;&#x662F;&#x7ED9;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x7A0B;&#x5E8F;&#x5DF2;&#x7ECF;&#x542F;&#x52A8;&#x7684;&#x89C6;&#x89C9;&#x6548;&#x679C;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x6B63;&#x5F0F;&#x7740;&#x624B;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x638C;&#x63E1;&#x4E00;&#x5957;&#x6B63;&#x786E;&#x6D4B;&#x91CF;&#x8BC4;&#x4F30;&#x542F;&#x52A8;&#x6027;&#x80FD;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x6240;&#x5E78;&#x7684;&#x662F;&#xFF0C;Android&#x7CFB;&#x7EDF;&#x6709;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#x6765;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x3002;</p>
+<ul>
+<li>1&#xFF09;&#x9996;&#x5148;&#x662F;<strong>display time</strong>&#xFF1A;&#x4ECE;Android KitKat&#x7248;&#x672C;&#x5F00;&#x59CB;&#xFF0C;Logcat&#x4E2D;&#x4F1A;&#x8F93;&#x51FA;&#x4ECE;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x5230;&#x67D0;&#x4E2A;Activity&#x663E;&#x793A;&#x5230;&#x753B;&#x9762;&#x4E0A;&#x6240;&#x82B1;&#x8D39;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6BD4;&#x8F83;&#x9002;&#x5408;&#x6D4B;&#x91CF;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x3002;</li>
+<li><p><img src="http://hukai.me/images/android_perf_6_launch_time_display_time.png" alt=""></p>
+</li>
+<li><p>2&#xFF09;&#x5176;&#x6B21;&#x662F;<strong>reportFullyDrawn</strong>&#x65B9;&#x6CD5;&#xFF1A;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x6765;&#x8BF4;&#x4F1A;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x63D0;&#x5347;&#x7A0B;&#x5E8F;&#x753B;&#x9762;&#x7684;&#x663E;&#x793A;&#x901F;&#x5EA6;&#xFF0C;&#x8FD9;&#x901A;&#x5E38;&#x4F1A;&#x5BFC;&#x81F4;&#x7684;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x7A0B;&#x5E8F;&#x753B;&#x9762;&#x5DF2;&#x7ECF;&#x663E;&#x793A;&#xFF0C;&#x53EF;&#x662F;&#x5185;&#x5BB9;&#x5374;&#x8FD8;&#x5728;&#x52A0;&#x8F7D;&#x4E2D;&#x3002;&#x4E3A;&#x4E86;&#x8861;&#x91CF;&#x8FD9;&#x4E9B;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;&#x6240;&#x8017;&#x8D39;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x8C03;&#x7528;<code>activity.reportFullyDrawn()</code>&#x65B9;&#x6CD5;&#x6765;&#x544A;&#x8BC9;&#x7CFB;&#x7EDF;&#x6B64;&#x65F6;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4EE5;&#x4FBF;&#x83B7;&#x53D6;&#x6574;&#x4E2A;&#x52A0;&#x8F7D;&#x7684;&#x8017;&#x65F6;&#x3002;</p>
+</li>
+<li><p><img src="http://hukai.me/images/android_perf_6_launch_time_report_fully_drawn.png" alt=""></p>
+</li>
+<li><p>3&#xFF09;&#x7136;&#x540E;&#x662F;<strong>Method Tracing</strong>&#xFF1A;&#x524D;&#x9762;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x4E86;&#x542F;&#x52A8;&#x8017;&#x65F6;&#x7684;&#x603B;&#x65F6;&#x95F4;&#xFF0C;&#x53EF;&#x662F;&#x5374;&#x65E0;&#x6CD5;&#x63D0;&#x4F9B;&#x5177;&#x4F53;&#x7684;&#x8017;&#x65F6;&#x7EC6;&#x8282;&#x3002;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;&#x5177;&#x4F53;&#x7684;&#x8017;&#x65F6;&#x5206;&#x5E03;&#x60C5;&#x51B5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Method Tracing&#x5DE5;&#x5177;&#x6765;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x7684;&#x6D4B;&#x91CF;&#x3002;</p>
+</li>
+<li><p><img src="http://hukai.me/images/android_perf_6_launch_time_method_tracing.png" alt=""></p>
+</li>
+<li><p>4&#xFF09;&#x6700;&#x540E;&#x662F;<strong>Systrace</strong>&#xFF1A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;onCreate&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x6DFB;&#x52A0;trace.beginSection()&#x4E0E;trace.endSection()&#x65B9;&#x6CD5;&#x6765;&#x58F0;&#x660E;&#x9700;&#x8981;&#x8DDF;&#x8E2A;&#x7684;&#x8D77;&#x6B62;&#x4F4D;&#x7F6E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x5E2E;&#x5FD9;&#x7EDF;&#x8BA1;&#x4E2D;&#x95F4;&#x7ECF;&#x5386;&#x8FC7;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8017;&#x65F6;&#xFF0C;&#x5E76;&#x8F93;&#x51FA;&#x62A5;&#x8868;&#x3002;</p>
+</li>
+</ul>
+<p><img src="http://hukai.me/images/android_perf_6_launch_time_systrace.png" alt=""></p>
+<h2 id="2&#xFF09;app-launch-time--activity-creation"><strong>2&#xFF09;App Launch Time &amp; Activity Creation</strong></h2>
+<p>&#x63D0;&#x5347;Activity&#x7684;&#x521B;&#x5EFA;&#x901F;&#x5EA6;&#x662F;&#x4F18;&#x5316;APP&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x7684;&#x9996;&#x8981;&#x5173;&#x6CE8;&#x76EE;&#x6807;&#x3002;&#x4ECE;&#x684C;&#x9762;&#x70B9;&#x51FB;APP&#x56FE;&#x6807;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x5F00;&#x59CB;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#x7B49;&#x5F85;Activity&#x7684;&#x521B;&#x5EFA;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x518D;&#x8FDB;&#x884C;&#x663E;&#x793A;&#x3002;&#x5728;Activity&#x7684;&#x521B;&#x5EFA;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x5F88;&#x591A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4F8B;&#x5982;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#x7684;&#x4E3B;&#x9898;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x9875;&#x9762;&#x7684;&#x5E03;&#x5C40;&#xFF0C;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#xFF0C;&#x83B7;&#x53D6;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#xFF0C;&#x8BFB;&#x5199;Preference&#x7B49;&#x7B49;&#x3002;</p>
+<p><img src="http://hukai.me/images/android_perf_6_activity_creation_0.png" alt=""></p>
+<p>&#x4E0A;&#x8FF0;&#x64CD;&#x4F5C;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x73AF;&#x8282;&#x51FA;&#x73B0;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x90FD;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x753B;&#x9762;&#x4E0D;&#x80FD;&#x53CA;&#x65F6;&#x663E;&#x793A;&#xFF0C;&#x5F71;&#x54CD;&#x4E86;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x3002;&#x4E0A;&#x4E00;&#x4E2A;&#x6BB5;&#x843D;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;&#x4F7F;&#x7528;Method Tracing&#x6765;&#x53D1;&#x73B0;&#x90A3;&#x4E9B;&#x8017;&#x65F6;&#x5360;&#x6BD4;&#x76F8;&#x5BF9;&#x8F83;&#x591A;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#xFF0C;&#x63A5;&#x4E0B;&#x53BB;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Systrace&#x6765;&#x5E2E;&#x5FD9;&#x5B9A;&#x4F4D;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x90A3;&#x4E2A;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x4F7F;&#x7528;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x5177;&#x4F53;&#x5B9A;&#x4F4D;&#x5206;&#x6790;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x4E4B;&#x5916;&#xFF0C;&#x4EE5;&#x4E0B;&#x4E24;&#x70B9;&#x7ECF;&#x9A8C;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5BF9;Activity&#x542F;&#x52A8;&#x505A;&#x6027;&#x80FD;&#x4F18;&#x5316;&#xFF1A;</p>
+<ul>
+<li>1&#xFF09;&#x4F18;&#x5316;&#x5E03;&#x5C40;&#x8017;&#x65F6;&#xFF1A;&#x4E00;&#x4E2A;&#x5E03;&#x5C40;&#x5C42;&#x7EA7;&#x8D8A;&#x6DF1;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x7684;&#x5143;&#x7D20;&#x8D8A;&#x591A;&#xFF0C;&#x5C31;&#x4F1A;&#x8017;&#x8D39;&#x66F4;&#x591A;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x95F4;&#x3002;&#x5173;&#x4E8E;&#x5E03;&#x5C40;&#x6027;&#x80FD;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x5C55;&#x5F00;&#x63CF;&#x8FF0;&#x4E86;&#xFF01;</li>
+<li>2&#xFF09;&#x5F02;&#x6B65;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF1A;&#x4E00;&#x5F00;&#x59CB;&#x53EA;&#x521D;&#x59CB;&#x5316;&#x6700;&#x9700;&#x8981;&#x7684;&#x5E03;&#x5C40;&#xFF0C;&#x5F02;&#x6B65;&#x52A0;&#x8F7D;&#x56FE;&#x7247;&#xFF0C;&#x975E;&#x7ACB;&#x5373;&#x9700;&#x8981;&#x7684;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x505A;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x3002;</li>
+</ul>
+<h2 id="3&#xFF09;app-launch-time--bloated-application-objects"><strong>3&#xFF09;App Launch Time &amp; Bloated Application Objects</strong></h2>
+<p>&#x5728;Application&#x521D;&#x59CB;&#x5316;&#x7684;&#x5730;&#x65B9;&#x505A;&#x592A;&#x591A;&#x7E41;&#x91CD;&#x7684;&#x4E8B;&#x60C5;&#x662F;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4E25;&#x91CD;&#x542F;&#x52A8;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x7684;&#x5143;&#x51F6;&#x4E4B;&#x4E00;&#x3002;Application&#x91CC;&#x9762;&#x7684;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x4E0D;&#x7ED3;&#x675F;&#xFF0C;&#x5176;&#x4ED6;&#x4EFB;&#x610F;&#x7684;&#x7A0B;&#x5E8F;&#x64CD;&#x4F5C;&#x90FD;&#x65E0;&#x6CD5;&#x8FDB;&#x884C;&#x3002;</p>
+<p><img src="http://hukai.me/images/android_perf_6_application_objs.png" alt=""></p>
+<p>&#x6709;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x4E00;&#x80A1;&#x8111;&#x7684;&#x628A;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x5168;&#x5C40;&#x7EC4;&#x4EF6;&#x7684;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x90FD;&#x653E;&#x5728;Application&#x7684;onCreate&#x91CC;&#x9762;&#xFF0C;&#x4F46;&#x5176;&#x5B9E;&#x5F88;&#x591A;&#x7EC4;&#x4EF6;&#x662F;&#x9700;&#x8981;&#x505A;&#x533A;&#x961F;&#x5BF9;&#x5F85;&#x7684;&#xFF0C;&#x6709;&#x4E9B;&#x53EF;&#x4EE5;&#x505A;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF0C;&#x6709;&#x4E9B;&#x53EF;&#x4EE5;&#x653E;&#x5230;&#x5176;&#x4ED6;&#x7684;&#x5730;&#x65B9;&#x505A;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#xFF0C;&#x7279;&#x522B;&#x9700;&#x8981;&#x7559;&#x610F;&#x5305;&#x542B;Disk IO&#x64CD;&#x4F5C;&#xFF0C;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x7B49;&#x4E25;&#x91CD;&#x8017;&#x65F6;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x4ED6;&#x4EEC;&#x4F1A;&#x4E25;&#x91CD;&#x963B;&#x585E;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x3002;</p>
+<p><img src="http://hukai.me/images/android_perf_6_application_create.png" alt=""></p>
+<p>&#x4F18;&#x5316;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#x505A;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;application&#x91CC;&#x9762;&#x505A;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x64CD;&#x4F5C;&#x5EF6;&#x8FDF;&#x5230;&#x7EC4;&#x4EF6;&#x771F;&#x6B63;&#x88AB;&#x8C03;&#x7528;&#x5230;&#x7684;&#x65F6;&#x5019;&#x518D;&#x505A;&#x52A0;&#x8F7D;&#x3002;</p>
+<p><img src="http://hukai.me/images/android_perf_6_application_lazyload.png" alt=""></p>
+<h2 id="4&#xFF09;app-launch-time--theme-launch-screens"><strong>4&#xFF09;App Launch Time &amp; Theme Launch Screens</strong></h2>
+<p>&#x542F;&#x52A8;&#x95EA;&#x5C4F;&#x4E0D;&#x4EC5;&#x4EC5;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x54C1;&#x724C;&#x5BA3;&#x4F20;&#x9875;&#xFF0C;&#x8FD8;&#x80FD;&#x591F;&#x51CF;&#x8F7B;&#x7528;&#x6237;&#x5BF9;&#x542F;&#x52A8;&#x8017;&#x65F6;&#x7684;&#x611F;&#x77E5;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E0D;&#x6070;&#x5F53;&#xFF0C;&#x5C06;&#x9002;&#x5F97;&#x5176;&#x53CD;&#x3002;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x8FC7;&#x5F53;&#x70B9;&#x51FB;&#x684C;&#x9762;&#x56FE;&#x6807;&#x542F;&#x52A8;APP&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x4E00;&#x76F4;&#x5230;&#x9875;&#x9762;&#x7684;&#x6E32;&#x67D3;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5;&#x3002;&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x8DB3;&#x591F;&#x5FEB;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x7684;&#x95EA;&#x5C4F;&#x7A97;&#x53E3;&#x505C;&#x7559;&#x663E;&#x793A;&#x7684;&#x65F6;&#x95F4;&#x5219;&#x4F1A;&#x5F88;&#x77ED;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x504F;&#x6162;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x542F;&#x52A8;&#x95EA;&#x5C4F;&#x53EF;&#x4EE5;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x51CF;&#x8F7B;&#x7528;&#x6237;&#x7B49;&#x5F85;&#x7684;&#x7126;&#x8651;&#x611F;&#xFF0C;&#x907F;&#x514D;&#x7528;&#x6237;&#x8FC7;&#x4E8E;&#x8F7B;&#x6613;&#x7684;&#x5173;&#x95ED;&#x5E94;&#x7528;&#x3002;</p>
+<p>&#x76EE;&#x524D;&#x5927;&#x591A;&#x6570;&#x5F00;&#x53D1;&#x8005;&#x90FD;&#x4F1A;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#x4E3B;&#x9898;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x66FF;&#x6362;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EA;&#x662F;&#x4F7F;&#x7528;&#x300E;&#x969C;&#x773C;&#x6CD5;&#x300F;&#x5F31;&#x5316;&#x4E86;&#x7528;&#x6237;&#x5BF9;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x7684;&#x611F;&#x77E5;&#xFF0C;&#x4F46;&#x672C;&#x8D28;&#x4E0A;&#x5E76;&#x6CA1;&#x6709;&#x5BF9;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x505A;&#x4EC0;&#x4E48;&#x4F18;&#x5316;&#x3002;&#x4E5F;&#x6709;&#x4E9B;APP&#x901A;&#x8FC7;&#x5173;&#x95ED;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#x5C5E;&#x6027;<code>android:windowDisablePreview</code>&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x76F4;&#x63A5;&#x79FB;&#x9664;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#x542F;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x5F0A;&#x7AEF;&#x662F;&#x7528;&#x6237;&#x4ECE;&#x70B9;&#x51FB;&#x684C;&#x9762;&#x56FE;&#x6807;&#x5230;&#x771F;&#x7684;&#x770B;&#x5230;&#x5B9E;&#x9645;&#x9875;&#x9762;&#x7684;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5F53;&#x4E2D;&#xFF0C;&#x753B;&#x9762;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x53D8;&#x5316;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x662F;&#x5341;&#x5206;&#x7CDF;&#x7CD5;&#x7684;&#xFF01;</p>
+<p><img src="http://hukai.me/images/android_perf_6_launch_screen.png" alt=""></p>
+<p><img src="http://hukai.me/images/android_perf_6_launch_screen2.png" alt=""></p>
+<p>&#x5BF9;&#x4E8E;&#x542F;&#x52A8;&#x95EA;&#x5C4F;&#xFF0C;&#x6B63;&#x786E;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x5F20;&#x56FE;&#x7247;&#xFF0C;&#x628A;&#x8FD9;&#x5F20;&#x56FE;&#x7247;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x4E3B;&#x9898;&#x7684;&#x65B9;&#x5F0F;&#x663E;&#x793A;&#x4E3A;&#x542F;&#x52A8;&#x95EA;&#x5C4F;&#xFF0C;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x5230;&#x4E3B;&#x9875;&#x9762;&#x7684;onCreate&#x7684;&#x65F6;&#x5019;&#x8BBE;&#x7F6E;&#x4E3A;&#x7A0B;&#x5E8F;&#x6B63;&#x5E38;&#x7684;&#x4E3B;&#x9898;&#x3002;</p>
+<p><img src="http://hukai.me/images/android_perf_6_launch_screen3.png" alt=""></p>
+<p><img src="http://hukai.me/images/android_perf_6_launch_screen4.png" alt=""></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./网络.html" class="navigation navigation-prev " aria-label="Previous page: 3.响应时间"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./电量.html" class="navigation navigation-next " aria-label="Next page: 4.电量"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

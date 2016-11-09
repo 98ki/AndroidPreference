@@ -1,0 +1,530 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>1.内存 | The Performance Lifecycle</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./模型.html" />
+    
+    
+    <link rel="prev" href="./index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1"
+        data-chapter-title="1.内存"
+        data-filepath="chapter1.md"
+        data-basepath="."
+        data-revision="Wed Nov 09 2016 15:17:35 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="./chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        1.内存
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="模型.html">
+            
+                
+                    <a href="./模型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        模型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="内存泄露.html">
+            
+                
+                    <a href="./内存泄露.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        内存泄露
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="图片.html">
+            
+                
+                    <a href="./图片.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        图片
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="引用类型.html">
+            
+                
+                    <a href="./引用类型.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        引用类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="垃圾回收.html">
+            
+                
+                    <a href="./垃圾回收.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        垃圾回收
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="分析工具.html">
+            
+                
+                    <a href="./分析工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="mat.html">
+            
+                
+                    <a href="./mat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        MAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="systrace.html">
+            
+                
+                    <a href="./systrace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        Systrace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="lint.html">
+            
+                
+                    <a href="./lint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.3.</b>
+                        
+                        Lint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="leakcanary.html">
+            
+                
+                    <a href="./leakcanary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.4.</b>
+                        
+                        LeakCanary
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="界面.html">
+            
+                
+                    <a href="./界面.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        2.界面
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="工具.html">
+            
+                
+                    <a href="./工具.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        工具
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="hierarchy-viewer.html">
+            
+                
+                    <a href="./hierarchy-viewer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        Hierarchy Viewer:
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="strict-mode.html">
+            
+                
+                    <a href="./strict-mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        Strict Mode
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="过度绘制.html">
+            
+                
+                    <a href="./过度绘制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        过度绘制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="网络.html">
+            
+                
+                    <a href="./网络.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        3.响应时间
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" >
+            
+            <span><b>3.1.</b> 网络</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="启动.html">
+            
+                
+                    <a href="./启动.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        启动
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="电量.html">
+            
+                
+                    <a href="./电量.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        4.电量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="瘦身.html">
+            
+                
+                    <a href="./瘦身.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        5.瘦身
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >The Performance Lifecycle</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="first-chapter">First Chapter</h1>
+<p>ANDROID&#x5185;&#x5B58;&#x9762;&#x4E34;&#x7684;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>1.&#x6709;&#x9650;&#x7684;&#x5806;&#x5185;&#x5B58;&#xFF0C;&#x539F;&#x59CB;&#x53EA;&#x6709;16M</p>
+<p>2.&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x6D88;&#x8017;&#x7B49;&#x6839;&#x636E;&#x8BBE;&#x5907;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7B49;&#x7EA7;&#xFF0C;&#x5C4F;&#x5E55;&#x5C3A;&#x5BF8;&#x7684;&#x4E0D;&#x540C;&#x800C;&#x4E0D;&#x540C;</p>
+<p>3.&#x7A0B;&#x5E8F;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x63A7;&#x5236;</p>
+<p>4.&#x652F;&#x6301;&#x540E;&#x53F0;&#x591A;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#xFF08;multitasking&#xFF09;</p>
+<p>5.&#x8FD0;&#x884C;&#x5728;&#x865A;&#x62DF;&#x673A;&#x4E4B;&#x4E0A;</p>
+<p>tips:</p>
+<p>&#x5C3D;&#x91CF;&#x907F;&#x514D;static&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x8017;&#x8D39;&#x8FC7;&#x591A;&#x7684;&#x5B9E;&#x4F8B;,&#x6BD4;&#x5982;Context</p>
+<p>&#x9891;&#x7E41;&#x64CD;&#x4F5C;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;StringBuffer&#x4EE3;&#x66FF;String&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x6240;&#x6709;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x7684;&#x7EC4;&#x5408;&#xFF1A;int&#x6570;&#x7EC4;&#x6BD4;Integer&#x6570;&#x7EC4;&#x597D;</p>
+<p>&#x603B;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x907F;&#x514D;&#x521B;&#x5EFA;&#x77ED;&#x547D;&#x7684;&#x4E34;&#x65F6;&#x5BF9;&#x8C61;&#x3002;&#x51CF;&#x5C11;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x5C31;&#x80FD;&#x51CF;&#x5C11;&#x5783;&#x573E;&#x6536;&#x96C6;&#xFF0C;&#x8FDB;&#x800C;&#x51CF;&#x5C11;&#x5BF9;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x907F;&#x514D;&#x4F7F;&#x7528;&#x6D6E;&#x70B9;&#x6570;</p>
+<p>&#x4F7F;&#x7528;&#x5B9E;&#x4F53;&#x7C7B;&#x6BD4;&#x63A5;&#x53E3;&#x597D;&#xFF0C;&#x5982;&#x679C;HashMap&#x5B8C;&#x5168;&#x9002;&#x5408;&#x4F60;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x90A3;&#x4E48;&#x4F7F;&#x7528;Map&#x5C31;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4EF7;&#x503C;&#xFF0C;&#x901F;&#x5EA6;&#x4F1A;&#x6162;&#x4E00;&#x500D;&#x3002;</p>
+<p>&#x907F;&#x514D;&#x4F7F;&#x7528;&#x679A;&#x4E3E;</p>
+<p>&#x4E86;&#x89E3;&#x5E76;&#x4F7F;&#x7528;&#x7C7B;&#x5E93;&#xFF0C;&#x5F88;&#x591A;&#x7C7B;&#x5E93;&#x662F;&#x7528;c\/c++&#x5B9E;&#x73B0;&#xFF0C;&#x5982;arrayCopy&#x65B9;&#x6CD5;&#x5728;&#x6709;JIT&#x7684;Nexus One&#x4E0A;&#xFF0C;&#x81EA;&#x884C;&#x7F16;&#x7801;&#x7684;&#x5FAA;&#x73AF;&#x5FEB;9&#x500D;&#x3002;String.indexOf()&#xFF0C;String.lastIndexOf()&#x7B49;&#x7279;&#x6B8A;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BD4;&#x8D77;Java&#x5FAA;&#x73AF;&#x5FEB;10&#x5230;100&#x500D;&#x3002;</p>
+<p>android.text.format&#x5305;&#x4E0B;&#x7684;Formatter&#x7C7B;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;IP&#x5730;&#x5740;&#x8F6C;&#x6362;&#x3001;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x8F6C;&#x6362;&#x7B49;&#x65B9;&#x6CD5;&#xFF1B;DateFormat&#x7C7B;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x5404;&#x79CD;&#x65F6;&#x95F4;&#x8F6C;&#x6362;&#xFF0C;&#x90FD;&#x662F;&#x975E;&#x5E38;&#x9AD8;&#x6548;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>TextUtils&#x7C7B;&#xFF0C;&#x5BF9;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;Android&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5B9E;&#x7528;&#x7684;TextUtils&#x7C7B;&#xFF0C;&#x5982;&#x679C;&#x5904;&#x7406;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x5185;&#x5BB9;&#x4E0D;&#x7528;&#x53BB;&#x601D;&#x8003;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E0D;&#x59A8;&#x8BD5;&#x8BD5;&#x8FD9;&#x4E2A;&#x5728;android.text.TextUtils&#x7684;&#x7C7B;</p>
+<p>&#x9AD8;&#x6027;&#x80FD;MemoryFile&#x7C7B;&#xFF0C;&#x5BF9;&#x4E8E;I\/O&#x9700;&#x8981;&#x9891;&#x7E41;&#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x548C;&#x5916;&#x90E8;&#x5B58;&#x50A8;&#x76F8;&#x5173;&#x7684;I\/O&#x64CD;&#x4F5C;&#xFF0C;MemoryFile&#x901A;&#x8FC7;&#x5C06; NAND&#x6216;SD&#x5361;&#x4E0A;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5206;&#x6BB5;&#x6620;&#x5C04;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x7528;&#x9AD8;&#x901F;&#x7684;RAM&#x4EE3;&#x66FF;&#x4E86;ROM&#x6216;SD&#x5361;&#xFF0C;&#x6027;&#x80FD;&#x81EA;&#x7136;&#x63D0;&#x9AD8;&#x4E0D;&#x5C11;&#xFF0C;&#x5BF9;&#x4E8E;Android&#x624B;&#x673A;&#x800C;&#x8A00;&#x540C;&#x65F6;&#x8FD8;&#x51CF;&#x5C11;&#x4E86;&#x7535;&#x91CF;&#x6D88;&#x8017;&#x3002;&#x8BE5;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x529F;&#x80FD;&#x4E0D;&#x662F;&#x5F88;&#x591A;&#xFF0C;&#x76F4;&#x63A5;&#x4ECE;Object&#x4E0A;&#x7EE7;&#x627F;&#xFF0C;&#x901A;&#x8FC7;JNI&#x7684;&#x65B9;&#x5F0F;&#x76F4;&#x63A5;&#x5728;C&#x5E95;&#x5C42;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x5C06;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x91CD;&#x65B0;&#x4F7F;&#x7528;&#x800C;&#x907F;&#x514D;&#x53BB;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#xFF0C;&#x6700;&#x5178;&#x578B;&#x7684;&#x4F7F;&#x7528;&#x5C31;&#x662F;&#x7F13;&#x5B58;&#xFF08;Cache&#xFF09;&#x548C;&#x6C60;&#xFF08;Pool&#xFF09;&#x3002;</p>
+<h3 id="1-&#x8282;&#x5236;&#x5730;&#x4F7F;&#x7528;service&#xFF0C;&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x63A7;&#x5236;service&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;android&#x5B98;&#x65B9;&#x63A8;&#x8350;&#x7684;&#x6700;&#x4F73;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5C31;&#x662F;&#x4F7F;&#x7528;intentservice&#xFF0C;&#x8FD9;&#x79CD;service&#x7684;&#x6700;&#x5927;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x5F53;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x505C;&#x6B62;&#xFF0C;&#x4ECE;&#x800C;&#x6781;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x907F;&#x514D;&#x4E86;service&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;"><strong>1. &#x8282;&#x5236;&#x5730;&#x4F7F;&#x7528;Service&#xFF0C;</strong>&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x63A7;&#x5236;Service&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;Android&#x5B98;&#x65B9;&#x63A8;&#x8350;&#x7684;&#x6700;&#x4F73;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5C31;&#x662F;&#x4F7F;&#x7528;<strong><a href="http://developer.android.com/reference/android/app/IntentService.html" target="_blank">IntentService</a></strong>&#xFF0C;&#x8FD9;&#x79CD;Service&#x7684;&#x6700;&#x5927;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x5F53;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x505C;&#x6B62;&#xFF0C;&#x4ECE;&#x800C;&#x6781;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x907F;&#x514D;&#x4E86;Service&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;</h3>
+<p>&#x53EA;&#x9700;&#x8981;&#x5728;Activity&#x4E2D;&#x91CD;&#x5199;onTrimMemory()&#x65B9;&#x6CD5;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x76D1;&#x542C;TRIM_MEMORY_UI_HIDDEN&#x8FD9;&#x4E2A;&#x7EA7;&#x522B;&#xFF0C;&#x4E00;&#x65E6;&#x89E6;&#x53D1;&#x4E86;&#x4E4B;&#x540E;&#x5C31;&#x8BF4;&#x660E;&#x7528;&#x6237;&#x5DF2;&#x7ECF;&#x79BB;&#x5F00;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x90A3;&#x4E48;&#x6B64;&#x65F6;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x8D44;&#x6E90;&#x91CA;&#x653E;&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x5728;&#x5185;&#x5B58;&#x7D27;&#x5F20;&#x7684;&#x65F6;&#x5019;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x53EF;&#x80FD;&#x4E00;&#x5F20;&#x56FE;&#x7247;&#x53EA;&#x6709;100k&#x4F60;&#x89C9;&#x5F97;&#x5B83;&#x5E76;&#x4E0D;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x8BFB;&#x53D6;&#x5230;&#x5185;&#x5B58;&#x5F53;&#x4E2D;&#x662F;&#x6309;&#x7167;&#x50CF;&#x7D20;&#x70B9;&#x6765;&#x7B97;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x5F20;&#x56FE;&#x7247;&#x662F;1500_1000&#x50CF;&#x7D20;&#xFF0C;&#x4F7F;&#x7528;&#x7684;ARGB_8888&#x989C;&#x8272;&#x7C7B;&#x578B;&#xFF0C;&#x90A3;&#x4E48;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x70B9;&#x5C31;&#x4F1A;&#x5360;&#x7528;4&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x603B;&#x5185;&#x5B58;&#x5C31;&#x662F;1500_1000*4&#x5B57;&#x8282;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;5.7M&#xFF0C;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x770B;&#x8D77;&#x6765;&#x5C31;&#x6BD4;&#x8F83;&#x6050;&#x6016;&#x4E86;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;proguard&#x6765;&#x5254;&#x9664;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x4EE3;&#x7801;"><strong>&#x4F7F;&#x7528;ProGuard&#x6765;&#x5254;&#x9664;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x4EE3;&#x7801;</strong></h3>
+<h3 id="&#x4E3A;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x6570;&#x636E;&#x4F7F;&#x7528;nano-protobufs"><strong>&#x4E3A;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x6570;&#x636E;&#x4F7F;&#x7528;nano protobufs</strong></h3>
+<h3 id="&#x5BF9;&#x6700;&#x7EC8;&#x7684;apk&#x4F7F;&#x7528;zipalign"><strong>&#x5BF9;&#x6700;&#x7EC8;&#x7684;APK&#x4F7F;&#x7528;zipalign</strong></h3>
+<p>&#x5728;&#x7F16;&#x5199;&#x5B8C;&#x6240;&#x6709;&#x4EE3;&#x7801;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x7CFB;&#x7EDF;&#x751F;&#x6210;APK&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528;<a href="http://developer.android.com/tools/help/zipalign.html" target="_blank">zipalign</a>&#x5BF9;APK&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x6821;&#x51C6;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x505A;&#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;&#x4F60;&#x7684;APK&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;RAM&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E9B;&#x7C7B;&#x4F3C;&#x56FE;&#x7247;&#x8D44;&#x6E90;&#x7684;&#x4E1C;&#x897F;&#x4E0D;&#x80FD;&#x88AB;mapped&#x3002;</p>
+<p><strong>Notes::</strong>Google Play&#x4E0D;&#x63A5;&#x53D7;&#x6CA1;&#x6709;&#x7ECF;&#x8FC7;zipalign&#x7684;APK&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./模型.html" class="navigation navigation-next " aria-label="Next page: 模型"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
